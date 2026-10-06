@@ -1,0 +1,218 @@
+<!doctype html>
+<!--
+  PROJECT PAGE TEMPLATE
+
+  This is the structure every project page shares, with the content taken out.
+  It is not linked from anywhere, and it keeps its noindex tag for good.
+
+  To start a new project page:
+    1. Copy this file to work/<short-name>.html (lowercase, hyphens, e.g. work/room-light.html).
+    2. Replace every <span class="todo">[...]</span> with real text. Remove the whole span,
+       not just the brackets, or the text keeps its dashed placeholder underline.
+    3. Fill the bracketed title and description in the <head> (they cannot use spans).
+    4. Delete the sections you do not need and the comments you no longer want.
+       Everything in this file is public once it is on GitHub, comments included.
+    5. Add a card for it on the home page, add it to sitemap.xml, and link it from the
+       Related lists of the pages it belongs with. README.md walks through each step.
+
+  To list what is still unfilled:  grep -n 'todo' work/<short-name>.html
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- todo: the page title is "<Project name> · Cameron Berger". The description and
+       og:description are the page's lede (below), word for word. og:title repeats the title. -->
+  <title>[Project name] · Cameron Berger</title>
+  <meta name="description" content="[The lede, word for word]">
+  <meta name="robots" content="noindex, nofollow"><!-- remove at launch; keep it here in the template -->
+  <meta name="theme-color" content="#0E0E10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[Project name] · Cameron Berger">
+  <meta property="og:description" content="[The lede, word for word]">
+  <meta property="og:image" content="https://cam-berger.github.io/assets/img/og.jpg">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body class="bg-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Header ===== -->
+  <!-- The same on every project page. Leave it as it is. -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Cameron Berger</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#art">Art</a>
+        <a href="../index.html#about">About</a>
+        <a class="nav-cv" href="../assets/cv.pdf">CV (PDF)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <!-- ===== Project head ===== -->
+      <!-- The breadcrumb, the one h1 on the page, a one- or two-sentence lede, and four
+           facts. The lede is also the page's meta description and, usually, the home card's text. -->
+      <header class="project-head">
+        <p class="crumbs"><a href="../index.html#work">Work</a> / <span class="todo">[Project name]</span></p>
+        <h1 class="title"><span class="todo">[Project name]</span></h1>
+        <p class="lede"><span class="todo">[One or two sentences: what this is and why it matters, for someone outside your field.]</span></p>
+
+        <!-- Optional tags, as on the chest X-ray page. Uncomment to use.
+        <ul class="tags">
+          <li>[Tag]</li>
+        </ul>
+        -->
+
+        <!-- Exactly four facts fill the row. Swap a label for one that fits better:
+             the other pages use "Status", "Publication" and "Links". For links, use
+             <dd class="mono-links"><a href="...">repo</a> · <a href="...">paper</a></dd>
+             and link a repository only once it is public. -->
+        <dl class="meta">
+          <div><dt class="label">Years</dt><dd><span class="todo">[Years]</span> · <span class="todo">[Where]</span></dd></div>
+          <div><dt class="label">My role</dt><dd><span class="todo">[Your role, and who else was on it]</span></dd></div>
+          <div><dt class="label">Written for</dt><dd><span class="todo">[The group or groups, the closest first]</span></dd></div>
+          <div><dt class="label">Status</dt><dd><span class="todo">[Complete, in progress, or to appear]</span></dd></div>
+        </dl>
+      </header>
+
+      <!-- ===== Figure ===== -->
+      <!-- One strong figure. Until you have it, the box stands in; keep its text and its
+           aria-label in step. When the image is ready, replace the whole <div class="figure-box">
+           with an <img> like the one below. Export two WebP sizes, about 800 and 1600 pixels
+           wide. Here width and height are the LARGE file's pixel size, which makes the image
+           fill the column; the sizes line is the column's width at each screen size.
+        <img src="../assets/img/work/name-800.webp"
+             srcset="../assets/img/work/name-800.webp 800w, ../assets/img/work/name-1600.webp 1600w"
+             sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 128px), 1152px"
+             width="1600" height="HEIGHT"
+             alt="What the figure shows, in words"
+             loading="lazy" decoding="async">
+      -->
+      <figure class="project-figure">
+        <div class="figure-box" role="img" aria-label="Placeholder: FIGURE: what the one figure shows">[FIGURE: what the one figure shows]</div>
+        <figcaption>Fig. 1 · <span class="todo">[One sentence on what the figure shows.]</span></figcaption>
+      </figure>
+
+      <div class="project-body">
+
+        <!-- ===== Main text ===== -->
+        <!-- Each block is a section whose h2 is styled as a small copper label. Every id on
+             the page must be unique and match its section's aria-labelledby. Headings go
+             h1 (the title), then h2 (these labels), then h3 (the step names): skip none. -->
+        <article class="project-main">
+          <section class="block" aria-labelledby="problem">
+            <h2 class="label label--accent" id="problem">The problem</h2>
+            <p><span class="todo">[The problem, as someone outside your field would state it.]</span></p>
+          </section>
+
+          <section class="block" aria-labelledby="built">
+            <h2 class="label label--accent" id="built">What I built</h2>
+            <p><span class="todo">[What you built, and what it does, in two or three sentences.]</span></p>
+          </section>
+
+          <!-- Three steps sit side by side on wide screens and stack on narrow ones. Keep it
+               to three. The number is decorative (aria-hidden); the list itself carries the order. -->
+          <section class="block block--steps" aria-labelledby="how">
+            <h2 class="label label--accent" id="how">How it works</h2>
+            <ol class="steps">
+              <li class="step">
+                <span class="step__n" aria-hidden="true">1</span>
+                <h3 class="step__name"><span class="todo">[Step name]</span></h3>
+                <p><span class="todo">[The first step, in one sentence.]</span></p>
+              </li>
+              <li class="step">
+                <span class="step__n" aria-hidden="true">2</span>
+                <h3 class="step__name"><span class="todo">[Step name]</span></h3>
+                <p><span class="todo">[The second step, in one sentence.]</span></p>
+              </li>
+              <li class="step">
+                <span class="step__n" aria-hidden="true">3</span>
+                <h3 class="step__name"><span class="todo">[Step name]</span></h3>
+                <p><span class="todo">[The third step, in one sentence.]</span></p>
+              </li>
+            </ol>
+          </section>
+
+          <!-- The pull quote (class="pull") is the one sentence a reader should remember.
+               The paragraph under it carries the number and how you measured it. -->
+          <section class="block" aria-labelledby="result">
+            <h2 class="label label--accent" id="result">Result</h2>
+            <p class="pull"><span class="todo">[The result in one sentence.]</span></p>
+            <p><span class="todo">[The number: the metric, the baseline, and how you measured it.]</span></p>
+          </section>
+
+          <section class="block" aria-labelledby="next">
+            <h2 class="label label--accent" id="next">What broke, what’s next</h2>
+            <p><span class="todo">[What broke, what you would do next, and what it taught you.]</span></p>
+          </section>
+        </article>
+
+        <!-- ===== Aside ===== -->
+        <!-- A panel on why the work fits a group, then short facts. On screens narrower than
+             1024px the aside drops below the main text. -->
+        <aside class="project-aside" aria-label="About this project">
+
+          <!-- For restricted work, the CIPHER page opens its aside with a disclosure panel
+               instead. Uncomment to use, and keep its wording exact.
+          <section class="panel panel--disclosure">
+            <div class="disclosure__item">
+              <h2 class="label label--cool">This page contains</h2>
+              <p>[What this page shows.]</p>
+            </div>
+            <div class="disclosure__item">
+              <h2 class="label label--cool">This page does not contain</h2>
+              <p>[What it leaves out, and why.]</p>
+            </div>
+          </section>
+          -->
+
+          <section class="panel">
+            <h2 class="h3">Why this belongs in <span class="todo">[Group name]</span></h2>
+            <p><span class="todo">[Two or three sentences on why this work belongs in that group, tied to its published work.]</span></p>
+          </section>
+
+          <section class="fact">
+            <h2 class="label">Tools</h2>
+            <p><span class="todo">[Languages, libraries, hardware, and compute]</span></p>
+          </section>
+
+          <!-- Optional, for a paper. Uncomment to use.
+          <section class="fact">
+            <h2 class="label">Publication</h2>
+            <p>[Paper title]. [Co-authors]. [Venue], [date].</p>
+          </section>
+          -->
+
+          <section class="fact">
+            <h2 class="label">Disclosure</h2>
+            <p><span class="todo">[Public, or what is held back and why]</span></p>
+          </section>
+
+          <!-- Links to the other project pages this one belongs with. They sit in the same
+               folder, so there is no ../ in front. Point each link at the right page, add
+               more <li> lines as needed, and add this page to their Related lists too. -->
+          <section class="fact">
+            <h2 class="label">Related</h2>
+            <ul>
+              <li><a href="gfm-interp.html"><span class="todo">[Related project]</span></a></li>
+            </ul>
+          </section>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer"><div class="wrap">Cameron Berger · 2026</div></footer>
+</body>
+</html>

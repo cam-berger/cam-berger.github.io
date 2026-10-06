@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-Firmware · Cameron Berger</title>
+  <meta name="description" content="Give an agent the firmware from a device it has never seen. It works out what the device does and writes a standard interface any AI or person can use.">
+  <meta name="robots" content="noindex, nofollow"><!-- remove at launch -->
+  <meta name="theme-color" content="#0E0E10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI-Firmware · Cameron Berger">
+  <meta property="og:description" content="Give an agent the firmware from a device it has never seen. It works out what the device does and writes a standard interface any AI or person can use.">
+  <meta property="og:image" content="https://cam-berger.github.io/assets/img/og.jpg">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body class="bg-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Cameron Berger</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#art">Art</a>
+        <a href="../index.html#about">About</a>
+        <a class="nav-cv" href="../assets/cv.pdf">CV (PDF)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <!-- ===== Project head ===== -->
+      <header class="project-head">
+        <p class="crumbs"><a href="../index.html#work">Work</a> / AI-Firmware</p>
+        <h1 class="title">AI-Firmware</h1>
+        <p class="lede">Give an agent the firmware from a device it has never seen. It works out what the device does and writes a standard interface any AI or person can use.</p>
+        <dl class="meta">
+          <div><dt class="label">Years</dt><dd>2026 · Draper Laboratory</dd></div>
+          <div><dt class="label">My role</dt><dd>Lead investigator and engineer</dd></div>
+          <div><dt class="label">Written for</dt><dd>All three groups, Responsive Environments first</dd></div>
+          <div><dt class="label">Status</dt><dd>Early positive results. Described at a high level pending release.</dd></div>
+        </dl>
+      </header>
+
+      <!-- ===== Figure ===== -->
+      <figure class="project-figure">
+        <div class="diagram">
+          <div class="diagram__row">
+            <p class="diagram__end">Firmware in</p>
+            <span class="diagram__arrow" aria-hidden="true">→</span>
+            <div class="diagram__col">
+              <p class="diagram__head"><span class="n">1</span>Read</p>
+              <p class="diagram__box"><b>Acquire</b><span>Get the best description the device allows: its flash, its datasheet, or what it says about itself.</span></p>
+              <p class="diagram__box"><b>Interpret</b><span>Decompile it and write an interface model of every operation.</span></p>
+            </div>
+            <span class="diagram__arrow" aria-hidden="true">→</span>
+            <div class="diagram__col">
+              <p class="diagram__head"><span class="n">2</span>Probe</p>
+              <p class="diagram__box"><b>Probe</b><span>Run the model on the real device, exactly as written.</span></p>
+              <p class="diagram__box"><b>Ground</b><span>Check each claim against a separate observation of the device.</span></p>
+            </div>
+            <span class="diagram__arrow" aria-hidden="true">→</span>
+            <div class="diagram__col">
+              <p class="diagram__head"><span class="n">3</span>Standardize</p>
+              <p class="diagram__box"><b>Emit</b><span>Package a driver, with its evidence, that a stranger can use.</span></p>
+              <p class="diagram__box"><b>Reuse</b><span>A fresh agent, given only the driver and a goal, has to use the device.</span></p>
+            </div>
+            <span class="diagram__arrow" aria-hidden="true">→</span>
+            <p class="diagram__end">Driver out</p>
+          </div>
+          <p class="diagram__note"><b>↺</b> Anything the device disagrees with goes back to Interpret as a list of defects, at most twice.</p>
+        </div>
+        <figcaption>Fig. 1 · Flash in, driver out. Six stages in three steps, with one repair loop. Nothing passes on the model’s word: every claim is checked against the device.</figcaption>
+      </figure>
+
+      <div class="project-body">
+
+        <!-- ===== Main text ===== -->
+        <article class="project-main">
+          <section class="block" aria-labelledby="problem">
+            <h2 class="label label--accent" id="problem">The problem</h2>
+            <p>Most hardware runs hand-written firmware with no standard interface. Only the engineers who wrote it can read it, and the interfaces they shipped are usually poor. Every time a system needs a new sensor, a person has to integrate it by hand.</p>
+          </section>
+
+          <section class="block" aria-labelledby="built">
+            <h2 class="label label--accent" id="built">What I built</h2>
+            <p>A toolkit and workflow that pulls the flash from a microcontroller and hands the binary to an agent. The agent probes and interprets the code from the outside, writes a standard interface for the device, and runs its own experiments on the hardware to confirm what each function does. It runs offline, at the edge.</p>
+            <p>At Draper I am pointing it at the bio lab: the sensors and equipment that run PREDICT96, Draper’s high-throughput organ-on-chip platform for testing drugs on human tissue, and the experiments we can now run through the drivers it writes.</p>
+          </section>
+
+          <section class="block block--steps" aria-labelledby="how">
+            <h2 class="label label--accent" id="how">How it works</h2>
+            <ol class="steps">
+              <li class="step">
+                <span class="step__n" aria-hidden="true">1</span>
+                <h3 class="step__name">Read</h3>
+                <p>Pull the flash image from the device and give the agent the binary, with no source and no documentation.</p>
+              </li>
+              <li class="step">
+                <span class="step__n" aria-hidden="true">2</span>
+                <h3 class="step__name">Probe</h3>
+                <p>The agent interprets the code, forms a hypothesis about each function, and tests it on the live hardware.</p>
+              </li>
+              <li class="step">
+                <span class="step__n" aria-hidden="true">3</span>
+                <h3 class="step__name">Standardize</h3>
+                <p>It writes an interface that any AI or person can read and use for downstream tasks.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="block" aria-labelledby="result">
+            <h2 class="label label--accent" id="result">Result</h2>
+            <p class="pull">On three emulated microcontrollers it had never seen, the agent finished two end to end with no human input. Both drivers passed every final check, and a fresh agent used each one to reach its goal.</p>
+            <p>Early results are positive on microcontrollers without encrypted firmware. In the latest benchmark run, one attempt per device, the two drivers passed 9 of 9 and 85 of 85 final checks in about ten minutes each; the third device, a parameter store, stopped during probing. These numbers come from the public benchmark’s emulated devices.</p>
+          </section>
+
+          <section class="block" aria-labelledby="next">
+            <h2 class="label label--accent" id="next">What’s next</h2>
+            <p>Encrypted firmware is out of reach for now. The next step is the one I want to take at the Media Lab: an agent that walks into an environment, learns every device in it this way, and turns the whole space into something a person can understand and act in. CRESt, from Ju Li’s lab at MIT, showed what an AI can do with lab equipment that people integrated for it. I want to know whether an AI can integrate the equipment itself.</p>
+          </section>
+        </article>
+
+        <!-- ===== Aside ===== -->
+        <aside class="project-aside" aria-label="About this project">
+          <section class="panel">
+            <h2 class="h3">Why this belongs in Responsive Environments</h2>
+            <p>The group builds distributed sensor networks, and someone always has to write the drivers. This is a way for a network to assemble itself. HexSense’s swappable payloads are a natural first test: an agent that learns each new payload on its own would let a node accept a sensor nobody wrote a driver for.</p>
+          </section>
+
+          <section class="fact">
+            <h2 class="label">Tools</h2>
+            <p>Python, with Java for Ghidra scripts. Agents run in the OpenAI Codex CLI and reach the toolkit over MCP. Ghidra (headless decompilation), Renode (emulated STM32 devices), the Arm GNU toolchain, and esptool. pyserial, pyusb, and pyftdi over UART, I²C, SPI, USB, and TCP. Hardware support: ESP32 flash reads, FTDI FT232H adapters, and a Bosch BME280 sensor.</p>
+          </section>
+
+          <section class="fact">
+            <h2 class="label">Disclosure</h2>
+            <p>The general tool is public as Generative Driver (Apache-2.0). Its Draper use is described at a high level only, pending release: no Draper code, data, or device specifics.</p>
+          </section>
+
+          <section class="fact">
+            <h2 class="label">Code</h2>
+            <ul>
+              <li><a href="https://github.com/cam-berger/generative-driver">Generative Driver on GitHub</a></li>
+            </ul>
+          </section>
+
+          <section class="fact">
+            <h2 class="label">Related</h2>
+            <ul>
+              <li><a href="../index.html#work"><em>A little life</em>, as a sculpture</a></li>
+              <li><a href="cipher.html">CIPHER</a></li>
+              <li><a href="gfm-interp.html">GFM-Interp</a></li>
+            </ul>
+          </section>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer"><div class="wrap">Cameron Berger · 2026</div></footer>
+</body>
+</html>

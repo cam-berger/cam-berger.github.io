@@ -1,0 +1,9 @@
+# Pre-launch: keep every crawler out while the site is being built.
+# At launch, replace the two rules below with these three lines:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://cam-berger.github.io/sitemap.xml
+# and remove the noindex meta tag from every page.
+
+User-agent: *
+Disallow: /

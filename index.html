@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio · Cameron Berger</title>
+  <meta name="description" content="I draw and paint. I served as a nuclear submarine officer, and I now build AI systems at Draper Laboratory.">
+  <meta name="robots" content="noindex, nofollow"><!-- remove at launch -->
+  <meta name="theme-color" content="#0E0E10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfolio · Cameron Berger">
+  <meta property="og:description" content="I draw and paint. I served as a nuclear submarine officer, and I now build AI systems at Draper Laboratory.">
+  <meta property="og:image" content="https://cam-berger.github.io/assets/img/og.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="bg-home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Cameron Berger</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
+        <a href="#art">Art</a>
+        <a href="#about">About</a>
+        <a class="nav-cv" href="assets/cv.pdf">CV (PDF)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <!-- ===== Hero ===== -->
+      <section class="hero">
+        <div class="hero__text">
+          <p class="eyebrow">Portfolio · Program in Media Arts and Sciences · Fall 2027</p>
+          <h1 class="display">How can AI learn an unfamiliar environment by experimenting on the devices already in it, and turn what it learns into awareness people can act on?</h1>
+          <p class="intro">I draw and paint. I served as a nuclear submarine officer, and I now build AI systems at Draper Laboratory.</p>
+          <p class="credo">I believe you have to be a good artist to be a good researcher, and a good researcher to be a good engineer.</p>
+        </div>
+        <figure class="hero__figure">
+          <img class="frame frame--hero"
+               src="assets/img/art/curled-figure-800.webp"
+               srcset="assets/img/art/curled-figure-800.webp 800w, assets/img/art/curled-figure-1500.webp 1500w"
+               sizes="(max-width: 459px) calc(100vw - 56px), (max-width: 1023px) 404px, (max-width: 1199px) 364px, 448px"
+               width="800" height="1067"
+               alt="Graphite drawing of a figure curled on a low block, seen from behind, head resting on folded arms"
+               fetchpriority="high" decoding="async">
+          <figcaption class="caption">
+            <span class="caption__title"><em>A little life</em>, 2024</span>
+            <span class="caption__medium">Graphite on Bristol board (vellum), 14 × 17 in</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- ===== Work ===== -->
+      <section class="section section--first" id="work" aria-labelledby="work-title">
+
+        <!-- How to read this portfolio -->
+        <section class="panel guide" aria-labelledby="guide-title">
+          <h2 class="guide__title" id="guide-title">How to read this portfolio</h2>
+          <div class="guide__cols">
+            <div class="guide__col">
+              <h3 class="label label--cool">Responsive Environments</h3>
+              <p>Start with <a href="work/ai-firmware.html">AI-Firmware</a> and the sculpture of <em>A little life</em>, then the art at the end. An agent that can learn any sensor it finds is a way for a network to assemble itself, without anyone writing the drivers.</p>
+            </div>
+            <div class="guide__col">
+              <h3 class="label label--cool">Multisensory Intelligence</h3>
+              <p>Start with <a href="work/gfm-interp.html">GFM-Interp</a>, then <a href="work/cipher.html">CIPHER</a>. One asks what a scientific foundation model has actually learned. The other asks how to keep a model’s recommendations traceable and honest, because a bad one costs trust.</p>
+            </div>
+            <div class="guide__col">
+              <h3 class="label label--cool">Signal Kinetics</h3>
+              <p>My statement and CV carry this application. The closest work here is <a href="work/ai-firmware.html">AI-Firmware</a>: agents that learn sensors deployed where people cannot easily reach them.</p>
+            </div>
+          </div>
+        </section>
+
+        <h2 class="h2 section__head" id="work-title">Work</h2>
+        <div class="work-grid">
+
+          <a class="card" href="work/ai-firmware.html">
+            <div class="card__media figure-box" role="img" aria-label="Placeholder: 3D RENDER of A little life as a sculpture, then a PHOTO of it lit by devices the agent learned on its own">[3D RENDER of A little life as a sculpture, then a PHOTO of it lit by devices the agent learned on its own]</div>
+            <div class="card__body">
+              <h3 class="card__title"><em>A little life</em>, as a sculpture</h3>
+              <p class="card__text">A drawing becomes a sculpture, and the room learns to light it. The agent finds the lights and sensors, works out what each one does, and lights the figure the way I drew it.</p>
+              <ul class="tags">
+                <li>Art</li>
+                <li>Sensors &amp; embedded</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="card" href="work/ai-firmware.html">
+            <div class="card__media card__media--diagram" role="img" aria-label="Diagram: firmware goes in; the agent reads, probes, and standardizes it, going back when the device disagrees; a driver comes out">
+              <div class="mini" aria-hidden="true">
+                <span class="mini__end">Firmware in</span>
+                <span class="mini__down">↓</span>
+                <ol class="mini__row"><li><span>Read</span></li><li><span>Probe</span></li><li><span>Standardize</span></li></ol>
+                <span class="mini__loop">↺ back to Read when the device disagrees</span>
+                <span class="mini__down">↓</span>
+                <span class="mini__end">Driver out</span>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">AI-Firmware</h3>
+              <p class="card__text">Give an agent the firmware from a device it has never seen. It works out what the device does and writes a standard interface any AI or person can use.</p>
+              <ul class="tags">
+                <li>Sensors &amp; embedded</li>
+                <li>Agents</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="card" href="work/cipher.html">
+            <div class="card__media card__media--fig">
+              <img src="assets/img/work/cipher-architecture-800.webp"
+                   width="800" height="341"
+                   alt="CIPHER system architecture: doctrine and mission documents feed two vector stores, a hosted language model generates recommendations, and a chat interface returns them to the user"
+                   loading="lazy" decoding="async">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">CIPHER</h3>
+              <p class="card__text">Turns a new operations order into a map, a timeline, and a plan a leader can question, with every output traceable. To appear at I/ITSEC 2026.</p>
+              <ul class="tags">
+                <li>Decision support</li>
+                <li>Human-AI</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="card" href="work/gfm-interp.html">
+            <div class="card__media card__media--fig">
+              <img src="assets/img/work/gfm-partner-coupling-800.webp"
+                   width="800" height="474"
+                   alt="Five-panel figure: partner-selective coupling in SpliceBERT, the spectrum of its positional embeddings with a sharp period-3 peak, and attention patterns of two heads"
+                   loading="lazy" decoding="async">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">GFM-Interp</h3>
+              <p class="card__text">A masked genome model finds splice sites it was never trained to find, using boundary content and a learned three-nucleotide wave.</p>
+              <ul class="tags">
+                <li>Interpretability</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="card" href="work/chest-xray.html">
+            <div class="card__media card__media--diagram" role="img" aria-label="Diagram: an X-ray, its clinical context, and the patient's vitals and labs are fused with cross-attention to predict 12 pathology labels">
+              <div class="mini" aria-hidden="true">
+                <ol class="mini__row mini__row--plus"><li><span>X-ray</span></li><li><span>Context</span></li><li><span>Vitals, labs</span></li></ol>
+                <span class="mini__down">↓</span>
+                <span class="mini__box">Cross-attention fusion</span>
+                <span class="mini__down">↓</span>
+                <span class="mini__end">12 pathology labels</span>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Multimodal chest X-ray</h3>
+              <p class="card__text">Can clinical context make an image classifier better at finding anomalies? A fine-tuned vision model fused with standardized patient records.</p>
+              <ul class="tags">
+                <li>Multimodal ML</li>
+              </ul>
+            </div>
+          </a>
+
+          <a class="card" href="#art">
+            <div class="card__media">
+              <img class="frame--studio"
+                   src="assets/img/art/studio-in-progress-800.webp"
+                   srcset="assets/img/art/studio-in-progress-800.webp 800w, assets/img/art/studio-in-progress-1500.webp 1500w"
+                   sizes="180px"
+                   width="800" height="1067"
+                   alt="Graphite figure drawing in progress, taped to a drawing board"
+                   loading="lazy" decoding="async">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">In the studio</h3>
+              <p class="card__text">A drawing in progress, taped to the board. Every piece starts as faint construction lines and a study of where the light falls.</p>
+              <ul class="tags">
+                <li>Art</li>
+              </ul>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ===== Writing and where this comes from ===== -->
+      <div class="section split">
+
+        <!-- Writing -->
+        <section class="stack" id="writing" aria-labelledby="writing-title">
+          <h2 class="h2" id="writing-title">Writing</h2>
+          <ul class="writing-list">
+            <li>
+              <p class="writing-list__title">Retrieval-Augmented LLMs for Military Decision Support and Evaluation</p>
+              <p class="writing-list__meta">
+                <span>Co-author · I/ITSEC 2026, to appear</span>
+                <a href="work/cipher.html" aria-label="CIPHER project page">project</a>
+              </p>
+            </li>
+            <li>
+              <p class="writing-list__title">Mechanistic Discovery in a Genomic Foundation Model Reveals a Donor-Acceptor Computation</p>
+              <p class="writing-list__meta">
+                <span>Lead author · XAI4Science workshop, NeurIPS 2026, to appear</span>
+                <a href="work/gfm-interp.html" aria-label="GFM-Interp project page">project</a>
+                <span class="todo" data-todo="link the code once the repo is public">code</span>
+              </p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Where this comes from (the Art link lands here) -->
+        <section class="stack" id="art" aria-labelledby="art-title">
+          <h2 class="h2" id="art-title">Where this comes from</h2>
+          <div class="stack stack--prose">
+            <p>I learned to draw from my uncle. I envied how easily he could put what he saw onto paper, and I have been working toward that ease ever since. Most of what follows is figures turned inward or away, in graphite on vellum Bristol and in oil. I build each one from hard-edged shapes of light laid over smooth gradients, because that is how I come to understand a form: by watching where the light breaks across it.</p>
+            <p>It is also how I work on a model or a microcontroller. I cannot open either one and simply read it. I probe it, watch how it responds, and draw the structure out from the surface.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ===== Gallery ===== -->
+      <!-- Each image's sizes is its shown width in each layout (phone, tablet, laptop): the
+           column width minus the 6px frame on each side (the studio drawing has no frame).
+           Recompute them if the columns change. -->
+      <div class="gallery">
+
+        <div class="gallery__row gallery__row--a">
+          <figure class="art">
+            <img class="frame"
+                 src="assets/img/art/blue-dress-sea-800.webp"
+                 srcset="assets/img/art/blue-dress-sea-800.webp 800w, assets/img/art/blue-dress-sea-1320.webp 1320w"
+                 sizes="(max-width: 639px) calc(100vw - 52px), (max-width: 1023px) calc(50vw - 68px), 270px"
+                 width="800" height="1075"
+                 alt="Oil painting of a woman in a flowing blue dress standing at the edge of the sea, seen from behind"
+                 loading="lazy" decoding="async">
+            <figcaption class="caption">
+              <span class="caption__title"><em>Reflection</em>, 2024</span>
+              <span class="caption__medium">Oil on canvas, 3 × 4 ft</span>
+            </figcaption>
+          </figure>
+          <figure class="art">
+            <img class="frame"
+                 src="assets/img/art/curled-figure-800.webp"
+                 srcset="assets/img/art/curled-figure-800.webp 800w, assets/img/art/curled-figure-1500.webp 1500w"
+                 sizes="(max-width: 639px) calc(100vw - 52px), (max-width: 1023px) calc(50vw - 68px), 272px"
+                 width="800" height="1067"
+                 alt="Graphite drawing of a figure curled on a low block, seen from behind, head resting on folded arms"
+                 loading="lazy" decoding="async">
+            <figcaption class="caption">
+              <span class="caption__title"><em>A little life</em>, 2024</span>
+              <span class="caption__medium">Graphite on Bristol board (vellum), 14 × 17 in</span>
+            </figcaption>
+          </figure>
+          <figure class="art">
+            <img class="frame"
+                 src="assets/img/art/chin-on-arms-800.webp"
+                 srcset="assets/img/art/chin-on-arms-800.webp 800w, assets/img/art/chin-on-arms-1600.webp 1600w"
+                 sizes="(max-width: 639px) calc(100vw - 52px), (max-width: 1023px) calc(100vw - 92px), (max-width: 1279px) calc(47.5vw - 126px), 482px"
+                 width="800" height="579"
+                 alt="Oil painting of a woman in profile resting her chin on folded arms, lit warmly against a dark ground"
+                 loading="lazy" decoding="async">
+            <figcaption class="caption">
+              <span class="caption__title"><em>Columbus</em>, 2026</span>
+              <span class="caption__medium">Oil on board, 24 × 32 in</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery__row gallery__row--b">
+          <figure class="art">
+            <img class="frame"
+                 src="assets/img/art/seated-woman-800.webp"
+                 srcset="assets/img/art/seated-woman-800.webp 800w, assets/img/art/seated-woman-1600.webp 1600w"
+                 sizes="(max-width: 639px) calc(100vw - 52px), (max-width: 1023px) calc(35.3vw - 57px), 368px"
+                 width="800" height="858"
+                 alt="Graphite drawing of a seated woman holding herself, face turned into her shoulder"
+                 loading="lazy" decoding="async">
+            <figcaption class="caption">
+              <span class="caption__title"><em>Survivor</em>, 2021</span>
+              <span class="caption__medium">Graphite on Bristol board, 14 × 17 in</span>
+            </figcaption>
+          </figure>
+          <figure class="art">
+            <img class="frame"
+                 src="assets/img/art/windblown-hair-800.webp"
+                 srcset="assets/img/art/windblown-hair-800.webp 800w, assets/img/art/windblown-hair-1600.webp 1600w"
+                 sizes="(max-width: 639px) calc(100vw - 52px), (max-width: 1023px) calc(36.2vw - 58px), 377px"
+                 width="800" height="837"
+                 alt="Graphite portrait of a woman with wind-blown hair looking up and to the side"
+                 loading="lazy" decoding="async">
+            <figcaption class="caption">
+              <span class="caption__title"><em><span class="todo">[Title]</span></em>, <span class="todo">[year]</span></span>
+              <span class="caption__medium">Graphite on Bristol board, <span class="todo">[size]</span></span>
+            </figcaption>
+          </figure>
+          <figure class="art">
+            <img class="frame frame--studio"
+                 src="assets/img/art/studio-in-progress-800.webp"
+                 srcset="assets/img/art/studio-in-progress-800.webp 800w, assets/img/art/studio-in-progress-1500.webp 1500w"
+                 sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(28.4vw - 36px), 296px"
+                 width="800" height="1067"
+                 alt="Graphite figure drawing in progress, taped to a drawing board"
+                 loading="lazy" decoding="async">
+            <figcaption class="caption">
+              <span class="caption__title"><em>Sistine</em>, 2026, in progress</span>
+              <span class="caption__medium">Graphite on Bristol board, 14 × 17 in</span>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== About ===== -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about__grid">
+          <div class="about__text">
+            <h2 class="h2" id="about-title">About</h2>
+            <p>I studied computer science at the Naval Academy and served as a nuclear submarine officer, where I learned to train, lead, and certify a crew in work that tolerates no failure. The Navy taught me to lead peers and to understand people from every walk of life. It did not teach me to engineer past the edge of what was already established, so I went looking for that in computer science and in the studio. I now build AI systems at Draper Laboratory. At MIT I want to make that work tangible: agents that learn the physical world by working in it.</p>
+          </div>
+          <div class="about__links">
+            <h3 class="label label--accent">Applying to</h3>
+            <ul>
+              <li>Responsive Environments</li>
+              <li>Multisensory Intelligence</li>
+              <li>Signal Kinetics</li>
+            </ul>
+            <h3 class="label label--accent">Find me</h3>
+            <ul>
+              <li><a href="mailto:camberger203@gmail.com">camberger203@gmail.com</a></li>
+              <li><a href="https://github.com/cam-berger">GitHub</a></li>
+              <li><a class="link-accent" href="assets/cv.pdf">CV (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer (continues the About band) ===== -->
+  <footer class="site-footer site-footer--band"><div class="wrap"><div class="site-footer__line">Cameron Berger · 2026</div></div></footer>
+</body>
+</html>
