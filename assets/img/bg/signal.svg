@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<!-- Signal: AI-Firmware. Generated for the portfolio; see the comment at the top of each page's art in main.css. -->
+<style>
+
+.rib { transform-box: fill-box; transform-origin: 0 50%; animation: draw 1500ms cubic-bezier(0.22, 1, 0.36, 1) backwards; animation-delay: var(--d); }
+.hi  { animation: on 420ms cubic-bezier(0.22, 1, 0.36, 1) backwards; animation-delay: var(--d); }
+@keyframes draw { from { transform: scaleX(0); } }
+@keyframes on   { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<rect width="1600" height="900" fill="#1D1815"/>
+<rect class="rib" x="0" y="145" width="1600" height="5" fill="#7A4E36" style="--d:380ms"/>
+<rect class="hi" x="72" y="104" width="72" height="46" fill="#7A4E36" style="--d:436ms"/>
+<rect class="hi" x="216" y="104" width="72" height="46" fill="#7A4E36" style="--d:548ms"/>
+<rect class="hi" x="360" y="104" width="72" height="46" fill="#7A4E36" style="--d:661ms"/>
+<rect class="hi" x="504" y="104" width="72" height="46" fill="#7A4E36" style="--d:773ms"/>
+<rect class="hi" x="648" y="104" width="72" height="46" fill="#7A4E36" style="--d:886ms"/>
+<rect class="hi" x="792" y="104" width="72" height="46" fill="#7A4E36" style="--d:998ms"/>
+<rect class="hi" x="936" y="104" width="72" height="46" fill="#7A4E36" style="--d:1111ms"/>
+<rect class="hi" x="1080" y="104" width="72" height="46" fill="#7A4E36" style="--d:1223ms"/>
+<rect class="hi" x="1224" y="104" width="72" height="46" fill="#7A4E36" style="--d:1336ms"/>
+<rect class="hi" x="1368" y="104" width="72" height="46" fill="#7A4E36" style="--d:1448ms"/>
+<rect class="hi" x="1512" y="104" width="72" height="46" fill="#7A4E36" style="--d:1561ms"/>
+<rect class="rib" x="0" y="260" width="1600" height="5" fill="#573C2B" style="--d:490ms"/>
+<rect class="hi" x="0" y="219" width="144" height="46" fill="#573C2B" style="--d:490ms"/>
+<rect class="hi" x="216" y="219" width="72" height="46" fill="#573C2B" style="--d:658ms"/>
+<rect class="hi" x="360" y="219" width="144" height="46" fill="#573C2B" style="--d:771ms"/>
+<rect class="hi" x="576" y="219" width="360" height="46" fill="#573C2B" style="--d:940ms"/>
+<rect class="hi" x="1008" y="219" width="72" height="46" fill="#573C2B" style="--d:1277ms"/>
+<rect class="hi" x="1152" y="219" width="72" height="46" fill="#9CC3D5" style="--d:1390ms"/>
+<rect class="hi" x="1368" y="219" width="72" height="46" fill="#573C2B" style="--d:1558ms"/>
+<rect class="hi" x="1512" y="219" width="72" height="46" fill="#573C2B" style="--d:1671ms"/>
+<rect class="rib" x="0" y="375" width="1600" height="5" fill="#3A2B21" style="--d:600ms"/>
+<rect class="hi" x="0" y="334" width="288" height="46" fill="#3A2B21" style="--d:600ms"/>
+<rect class="hi" x="360" y="334" width="72" height="46" fill="#3A2B21" style="--d:881ms"/>
+<rect class="hi" x="576" y="334" width="72" height="46" fill="#3A2B21" style="--d:1050ms"/>
+<rect class="hi" x="720" y="334" width="216" height="46" fill="#3A2B21" style="--d:1162ms"/>
+<rect class="hi" x="1008" y="334" width="144" height="46" fill="#3A2B21" style="--d:1387ms"/>
+<rect class="hi" x="1224" y="334" width="144" height="46" fill="#3A2B21" style="--d:1556ms"/>
+<rect class="hi" x="1512" y="334" width="72" height="46" fill="#3A2B21" style="--d:1781ms"/>
+</svg>

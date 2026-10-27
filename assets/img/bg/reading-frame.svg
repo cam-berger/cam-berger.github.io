@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<!-- Reading frame: GFM-Interp. Generated for the portfolio; see the comment at the top of each page's art in main.css. -->
+<style>
+
+.nt     { transform-box: fill-box; transform-origin: 50% 100%; animation: grow 640ms cubic-bezier(0.22, 1, 0.36, 1) backwards; animation-delay: var(--d); }
+.intron { animation: on 900ms cubic-bezier(0.22, 1, 0.36, 1) backwards; animation-delay: var(--d); }
+.donor  { transform-box: fill-box; transform-origin: 50% 100%; animation: grow 900ms cubic-bezier(0.22, 1, 0.36, 1) backwards; animation-delay: var(--d); }
+@keyframes grow { from { transform: scaleY(0); } }
+@keyframes on   { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+<rect width="1600" height="900" fill="#17142A"/>
+<rect class="nt" x="0" y="280" width="12" height="140" fill="#201B3B" style="--d:380ms"/>
+<rect class="nt" x="12" y="180" width="12" height="240" fill="#2C2552" style="--d:380ms"/>
+<rect class="nt" x="24" y="80" width="12" height="340" fill="#3B3372" style="--d:380ms"/>
+<rect class="nt" x="36" y="280" width="12" height="140" fill="#201B3B" style="--d:402ms"/>
+<rect class="nt" x="48" y="180" width="12" height="240" fill="#2C2552" style="--d:402ms"/>
+<rect class="nt" x="60" y="80" width="12" height="340" fill="#3B3372" style="--d:402ms"/>
+<rect class="nt" x="72" y="280" width="12" height="140" fill="#201B3B" style="--d:424ms"/>
+<rect class="nt" x="84" y="180" width="12" height="240" fill="#2C2552" style="--d:424ms"/>
+<rect class="nt" x="96" y="80" width="12" height="340" fill="#3B3372" style="--d:424ms"/>
+<rect class="nt" x="108" y="280" width="12" height="140" fill="#201B3B" style="--d:446ms"/>
+<rect class="nt" x="120" y="180" width="12" height="240" fill="#2C2552" style="--d:446ms"/>
+<rect class="nt" x="132" y="80" width="12" height="340" fill="#3B3372" style="--d:446ms"/>
+<rect class="nt" x="144" y="280" width="12" height="140" fill="#201B3B" style="--d:468ms"/>
+<rect class="nt" x="156" y="180" width="12" height="240" fill="#2C2552" style="--d:468ms"/>
+<rect class="nt" x="168" y="80" width="12" height="340" fill="#3B3372" style="--d:468ms"/>
+<rect class="nt" x="180" y="280" width="12" height="140" fill="#201B3B" style="--d:490ms"/>
+<rect class="nt" x="192" y="180" width="12" height="240" fill="#2C2552" style="--d:490ms"/>
+<rect class="nt" x="204" y="80" width="12" height="340" fill="#3B3372" style="--d:490ms"/>
+<rect class="nt" x="216" y="280" width="12" height="140" fill="#201B3B" style="--d:512ms"/>
+<rect class="nt" x="228" y="180" width="12" height="240" fill="#2C2552" style="--d:512ms"/>
+<rect class="nt" x="240" y="80" width="12" height="340" fill="#3B3372" style="--d:512ms"/>
+<rect class="nt" x="252" y="280" width="12" height="140" fill="#201B3B" style="--d:534ms"/>
+<rect class="nt" x="264" y="180" width="12" height="240" fill="#2C2552" style="--d:534ms"/>
+<rect class="nt" x="276" y="80" width="12" height="340" fill="#3B3372" style="--d:534ms"/>
+<rect class="nt" x="288" y="280" width="12" height="140" fill="#201B3B" style="--d:556ms"/>
+<rect class="nt" x="300" y="180" width="12" height="240" fill="#2C2552" style="--d:556ms"/>
+<rect class="nt" x="312" y="80" width="12" height="340" fill="#3B3372" style="--d:556ms"/>
+<rect class="nt" x="324" y="280" width="12" height="140" fill="#201B3B" style="--d:578ms"/>
+<rect class="nt" x="336" y="180" width="12" height="240" fill="#2C2552" style="--d:578ms"/>
+<rect class="nt" x="348" y="80" width="12" height="340" fill="#3B3372" style="--d:578ms"/>
+<rect class="nt" x="360" y="280" width="12" height="140" fill="#201B3B" style="--d:600ms"/>
+<rect class="nt" x="372" y="180" width="12" height="240" fill="#2C2552" style="--d:600ms"/>
+<rect class="nt" x="384" y="80" width="12" height="340" fill="#3B3372" style="--d:600ms"/>
+<rect class="nt" x="396" y="280" width="12" height="140" fill="#201B3B" style="--d:622ms"/>
+<rect class="nt" x="408" y="180" width="12" height="240" fill="#2C2552" style="--d:622ms"/>
+<rect class="nt" x="420" y="80" width="12" height="340" fill="#3B3372" style="--d:622ms"/>
+<rect class="nt" x="432" y="280" width="12" height="140" fill="#201B3B" style="--d:644ms"/>
+<rect class="nt" x="444" y="180" width="12" height="240" fill="#2C2552" style="--d:644ms"/>
+<rect class="nt" x="456" y="80" width="12" height="340" fill="#3B3372" style="--d:644ms"/>
+<rect class="nt" x="468" y="280" width="12" height="140" fill="#201B3B" style="--d:666ms"/>
+<rect class="nt" x="480" y="180" width="12" height="240" fill="#2C2552" style="--d:666ms"/>
+<rect class="nt" x="492" y="80" width="12" height="340" fill="#3B3372" style="--d:666ms"/>
+<rect class="nt" x="504" y="280" width="12" height="140" fill="#201B3B" style="--d:688ms"/>
+<rect class="nt" x="516" y="180" width="12" height="240" fill="#2C2552" style="--d:688ms"/>
+<rect class="nt" x="528" y="80" width="12" height="340" fill="#3B3372" style="--d:688ms"/>
+<rect class="nt" x="540" y="280" width="12" height="140" fill="#201B3B" style="--d:710ms"/>
+<rect class="nt" x="552" y="180" width="12" height="240" fill="#2C2552" style="--d:710ms"/>
+<rect class="nt" x="564" y="80" width="12" height="340" fill="#3B3372" style="--d:710ms"/>
+<rect class="nt" x="576" y="280" width="12" height="140" fill="#201B3B" style="--d:732ms"/>
+<rect class="nt" x="588" y="180" width="12" height="240" fill="#2C2552" style="--d:732ms"/>
+<rect class="nt" x="600" y="80" width="12" height="340" fill="#3B3372" style="--d:732ms"/>
+<rect class="nt" x="612" y="280" width="12" height="140" fill="#201B3B" style="--d:754ms"/>
+<rect class="nt" x="624" y="180" width="12" height="240" fill="#2C2552" style="--d:754ms"/>
+<rect class="nt" x="636" y="80" width="12" height="340" fill="#3B3372" style="--d:754ms"/>
+<rect class="nt" x="648" y="280" width="12" height="140" fill="#201B3B" style="--d:776ms"/>
+<rect class="nt" x="660" y="180" width="12" height="240" fill="#2C2552" style="--d:776ms"/>
+<rect class="nt" x="672" y="80" width="12" height="340" fill="#3B3372" style="--d:776ms"/>
+<rect class="nt" x="684" y="280" width="12" height="140" fill="#201B3B" style="--d:798ms"/>
+<rect class="nt" x="696" y="180" width="12" height="240" fill="#2C2552" style="--d:798ms"/>
+<rect class="nt" x="708" y="80" width="12" height="340" fill="#3B3372" style="--d:798ms"/>
+<rect class="nt" x="720" y="280" width="12" height="140" fill="#201B3B" style="--d:820ms"/>
+<rect class="nt" x="732" y="180" width="12" height="240" fill="#2C2552" style="--d:820ms"/>
+<rect class="nt" x="744" y="80" width="12" height="340" fill="#3B3372" style="--d:820ms"/>
+<rect class="nt" x="756" y="280" width="12" height="140" fill="#201B3B" style="--d:842ms"/>
+<rect class="nt" x="768" y="180" width="12" height="240" fill="#2C2552" style="--d:842ms"/>
+<rect class="nt" x="780" y="80" width="12" height="340" fill="#3B3372" style="--d:842ms"/>
+<rect class="nt" x="792" y="280" width="12" height="140" fill="#201B3B" style="--d:864ms"/>
+<rect class="nt" x="804" y="180" width="12" height="240" fill="#2C2552" style="--d:864ms"/>
+<rect class="nt" x="816" y="80" width="12" height="340" fill="#3B3372" style="--d:864ms"/>
+<rect class="nt" x="828" y="280" width="12" height="140" fill="#201B3B" style="--d:886ms"/>
+<rect class="nt" x="840" y="180" width="12" height="240" fill="#2C2552" style="--d:886ms"/>
+<rect class="nt" x="852" y="80" width="12" height="340" fill="#3B3372" style="--d:886ms"/>
+<rect class="nt" x="864" y="280" width="12" height="140" fill="#201B3B" style="--d:908ms"/>
+<rect class="nt" x="876" y="180" width="12" height="240" fill="#2C2552" style="--d:908ms"/>
+<rect class="nt" x="888" y="80" width="12" height="340" fill="#3B3372" style="--d:908ms"/>
+<rect class="nt" x="900" y="280" width="12" height="140" fill="#201B3B" style="--d:930ms"/>
+<rect class="nt" x="912" y="180" width="12" height="240" fill="#2C2552" style="--d:930ms"/>
+<rect class="nt" x="924" y="80" width="12" height="340" fill="#3B3372" style="--d:930ms"/>
+<rect class="nt" x="936" y="280" width="12" height="140" fill="#201B3B" style="--d:952ms"/>
+<rect class="nt" x="948" y="180" width="12" height="240" fill="#2C2552" style="--d:952ms"/>
+<rect class="nt" x="960" y="80" width="12" height="340" fill="#3B3372" style="--d:952ms"/>
+<rect class="nt" x="972" y="280" width="12" height="140" fill="#201B3B" style="--d:974ms"/>
+<rect class="nt" x="984" y="180" width="12" height="240" fill="#2C2552" style="--d:974ms"/>
+<rect class="nt" x="996" y="80" width="12" height="340" fill="#3B3372" style="--d:974ms"/>
+<rect class="nt" x="1008" y="280" width="12" height="140" fill="#201B3B" style="--d:996ms"/>
+<rect class="nt" x="1020" y="180" width="12" height="240" fill="#2C2552" style="--d:996ms"/>
+<rect class="nt" x="1032" y="80" width="12" height="340" fill="#3B3372" style="--d:996ms"/>
+<rect class="donor" x="1044" y="30" width="24" height="390" fill="#E2A55B" style="--d:1438ms"/>
+<path class="intron" d="M1068 420V316H1080V420ZM1080 420V316H1092V420ZM1092 420V296H1104V420ZM1104 420V276H1116V420ZM1116 420V336H1128V420ZM1128 420V336H1140V420ZM1140 420V276H1152V420ZM1152 420V296H1164V420ZM1164 420V316H1176V420ZM1176 420V316H1188V420ZM1188 420V276H1200V420ZM1200 420V276H1212V420ZM1212 420V276H1224V420ZM1224 420V316H1236V420ZM1236 420V316H1248V420ZM1248 420V316H1260V420ZM1260 420V276H1272V420ZM1272 420V336H1284V420ZM1284 420V336H1296V420ZM1296 420V316H1308V420ZM1308 420V336H1320V420ZM1320 420V296H1332V420ZM1332 420V336H1344V420ZM1344 420V296H1356V420ZM1356 420V276H1368V420ZM1368 420V276H1380V420ZM1380 420V276H1392V420ZM1392 420V276H1404V420ZM1404 420V276H1416V420ZM1416 420V316H1428V420ZM1428 420V296H1440V420ZM1440 420V336H1452V420ZM1452 420V336H1464V420ZM1464 420V316H1476V420ZM1476 420V276H1488V420ZM1488 420V316H1500V420ZM1500 420V296H1512V420ZM1512 420V276H1524V420ZM1524 420V296H1536V420ZM1536 420V276H1548V420ZM1548 420V276H1560V420ZM1560 420V296H1572V420ZM1572 420V276H1584V420ZM1584 420V316H1596V420ZM1596 420V296H1608V420Z" fill="#221D3F" style="--d:1138ms"/>
+</svg>

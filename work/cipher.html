@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-project scheme-sage" style="--next-hero: #17142A">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CIPHER · Cameron Berger</title>
-  <meta name="description" content="Decision support for a leader handed a new operations order. It turns dense text into a map, a timeline, and a plan they can question.">
+  <meta name="description" content="Decision support for Army operational commanders. Turning dense textual and graphical information into a trusted knowledge graph for agentic reasoning.">
   <meta name="robots" content="noindex, nofollow"><!-- remove at launch -->
-  <meta name="theme-color" content="#0E0E10">
+  <meta name="theme-color" content="#DFE0CF">
   <meta property="og:type" content="website">
   <meta property="og:title" content="CIPHER · Cameron Berger">
-  <meta property="og:description" content="Decision support for a leader handed a new operations order. It turns dense text into a map, a timeline, and a plan they can question.">
+  <meta property="og:description" content="Decision support for Army operational commanders. Turning dense textual and graphical information into a trusted knowledge graph for agentic reasoning.">
   <meta property="og:image" content="https://cam-berger.github.io/assets/img/og.jpg">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="../assets/js/motion.js"></script>
 </head>
-<body class="bg-page">
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===== Header ===== -->
@@ -26,131 +27,147 @@
       <a class="brand" href="../index.html">Cameron Berger</a>
       <nav class="nav" aria-label="Main">
         <a href="../index.html#work">Work</a>
-        <a href="../index.html#writing">Writing</a>
         <a href="../index.html#art">Art</a>
-        <a href="../index.html#about">About</a>
-        <a class="nav-cv" href="../assets/cv.pdf">CV (PDF)</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="nav-cv" href="../assets/cv.pdf">CV</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <div class="wrap">
 
-      <!-- ===== Project head ===== -->
-      <header class="project-head">
-        <p class="crumbs"><a href="../index.html#work">Work</a> / CIPHER</p>
-        <h1 class="title">CIPHER</h1>
-        <p class="lede">Decision support for a leader handed a new operations order. It turns dense text into a map, a timeline, and a plan they can question.</p>
-        <dl class="meta">
+    <!-- ===== Hero · sage, terrain.svg ===== -->
+    <header class="p-hero">
+      <div class="p-hero__art" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="label" data-reveal><span class="vt-num" data-vt="num-cipher" data-vt-self>02</span> · HUMAN–AI-INTERACTION</p>
+        <h1 data-reveal data-vt="title-cipher" data-vt-self>CIPHER</h1>
+        <p class="p-hero__lede" data-reveal>Decision support for Army operational commanders. Turning dense textual and graphical information into a trusted knowledge graph for agentic reasoning.</p>
+      </div>
+    </header>
+
+    <!-- ===== Body ===== -->
+    <div class="p-body">
+      <div class="wrap">
+
+        <dl class="p-meta" data-reveal>
           <div><dt class="label">Years</dt><dd>2025–2026 · Draper Laboratory</dd></div>
           <div><dt class="label">My role</dt><dd>Author. Research on representation and on augmenting human awareness</dd></div>
-          <div><dt class="label">Written for</dt><dd>Multisensory Intelligence, Responsive Environments</dd></div>
           <div><dt class="label">Publication</dt><dd>To appear at I/ITSEC 2026</dd></div>
         </dl>
-      </header>
 
-      <!-- ===== Figure ===== -->
-      <figure class="project-figure">
-        <img class="plate"
-             src="../assets/img/work/cipher-architecture-800.webp"
-             srcset="../assets/img/work/cipher-architecture-800.webp 800w, ../assets/img/work/cipher-architecture-1118.webp 1118w"
-             sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 128px), 1152px"
-             width="1118" height="477"
-             alt="CIPHER system architecture. Doctrine and mission documents are embedded into two separate vector stores. Unit readiness data and retrieved excerpts feed a language model, hosted on an edge device, a local server, or a cloud server, which generates recommendations. A Streamlit application shows summaries and recommendations, configuration options, and a chat with the user."
-             loading="lazy" decoding="async">
-        <figcaption>Fig. 1 · CIPHER’s architecture, from the I/ITSEC paper. Doctrine and mission documents go into two separate vector stores; a locally hosted language model combines what it retrieves with unit-readiness data; the commander questions its recommendations through a chat interface.</figcaption>
-      </figure>
+        <!-- ===== Figure ===== -->
+        <figure class="p-figure" data-reveal>
+          <div class="p-figure__mat">
+            <img src="../assets/img/work/cipher-architecture-800.webp"
+                 srcset="../assets/img/work/cipher-architecture-800.webp 800w, ../assets/img/work/cipher-architecture-1118.webp 1118w"
+                 sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 80px), 1152px"
+                 width="1118" height="477"
+                 alt="CIPHER system architecture. Doctrine and mission documents are processed into vector stores. Unit readiness data and retrieved excerpts feed a language model, hosted on an edge device, a local server, or a cloud server, which generates recommendations for commanders on the front lines."
+                 loading="lazy" decoding="async">
+          </div>
+          <figcaption>Fig. 1 · CIPHER’s architecture, from the I/ITSEC paper. Doctrine and mission documents go into two separate vector stores; a locally hosted language model combines what it retrieves with unit-readiness data; the commander interacts with CIPHER through a chat interface.</figcaption>
+        </figure>
 
-      <div class="project-body">
+        <div class="p-columns">
 
-        <!-- ===== Main text ===== -->
-        <article class="project-main">
-          <section class="block" aria-labelledby="problem">
-            <h2 class="label label--accent" id="problem">The problem</h2>
-            <p>A leader handed a new order has to turn pages of doctrine-shaped text into a plan, often on the front line and always on a clock. The paperwork competes with the thinking.</p>
-          </section>
+          <!-- ===== Main text ===== -->
+          <article class="p-main">
+            <section aria-labelledby="problem" data-reveal>
+              <h2 class="label" id="problem">The problem</h2>
+              <p>Leaders are handed new orders and have to turn pages of dense, doctrine-shaped text into a plan, on the front line and on a clock. The manual processing removes the commander’s ability to think strategically and safely.</p>
+            </section>
 
-          <section class="block" aria-labelledby="built">
-            <h2 class="label label--accent" id="built">What I built</h2>
-            <p>A harness of tool servers around a language model. Given an order, it builds a map, a timeline, and a flowchart of the plan, checks its own output for hallucinations, and proposes how the plan could be carried out. The leader works from an interactive picture instead of a blank page.</p>
-          </section>
+            <section aria-labelledby="built" data-reveal>
+              <h2 class="label" id="built">What I built</h2>
+              <p>Since the paper, a harness of MCP tools to serve CIPHER. Given a set of order documents, it extracts and builds an interpretable knowledge graph that can be used for a multitude of purposes, such as an operations map, a timeline, and a plan flowchart; it verifies its own output against hallucinations and leverages reasoning to propose how the plan could be carried out. The leader works from an interactive generative interface instead of just a chat.</p>
+            </section>
 
-          <section class="block block--steps" aria-labelledby="method">
-            <h2 class="label label--accent" id="method">Method</h2>
-            <ol class="steps">
-              <li class="step">
-                <span class="step__n" aria-hidden="true">1</span>
-                <h3 class="step__name">Represent</h3>
-                <p>The order is normalized into a structured schema, then rendered as a map, a timeline, and a flow.</p>
-              </li>
-              <li class="step">
-                <span class="step__n" aria-hidden="true">2</span>
-                <h3 class="step__name">Judge</h3>
-                <p>A language model scores each output against the source order and flags what it cannot trace.</p>
-              </li>
-              <li class="step">
-                <span class="step__n" aria-hidden="true">3</span>
-                <h3 class="step__name">Refine</h3>
-                <p>An automated pipeline evaluates and improves the prompts, including the judge’s own when its metrics broke.</p>
-              </li>
-            </ol>
-          </section>
+            <section aria-labelledby="method" data-reveal>
+              <h2 class="label" id="method">Method</h2>
+              <ol class="steps" role="list">
+                <li class="step">
+                  <span class="step__n" aria-hidden="true">1</span>
+                  <h3>Represent</h3>
+                  <p>Orders and plans are normalized into an adaptable schema, then rendered as a map, a timeline, and a flow.</p>
+                </li>
+                <li class="step">
+                  <span class="step__n" aria-hidden="true">2</span>
+                  <h3>Judge</h3>
+                  <p>A language model scores each output against the knowledge graph, source documents, and doctrine and flags what it cannot trace.</p>
+                </li>
+                <li class="step">
+                  <span class="step__n" aria-hidden="true">3</span>
+                  <h3>Refine</h3>
+                  <p>An automated pipeline evaluates and improves the outputs and toolkit to improve alignment with subject matter experts.</p>
+                </li>
+              </ol>
+            </section>
 
-          <section class="block" aria-labelledby="learned">
-            <h2 class="label label--accent" id="learned">What I learned</h2>
-            <p>Using a language model as the judge worked once its own prompts were refined. Recommendations in open-ended situations still need a person in the loop.</p>
-          </section>
+            <section aria-labelledby="learned" data-reveal>
+              <h2 class="label" id="learned">What I learned</h2>
+              <p>Using a language model as the judge worked once prompts were refined, but it has its own limitations and drawbacks. Safe recommendations need to be derived directly from source information, and multimodal interfaces with human-in-the-loop review are necessary for foundational understanding.</p>
+            </section>
 
-          <section class="block" aria-labelledby="cost">
-            <h2 class="label label--accent" id="cost">What a bad recommendation costs</h2>
-            <p class="pull">A bad recommendation costs trust.</p>
-            <p>That is the safety problem. AI in these settings has to sit inside a bounded system where risk assessment is real, and every output has to be traceable and honest.</p>
-          </section>
+            <section aria-labelledby="cost" data-reveal>
+              <h2 class="label" id="cost">What a bad recommendation costs</h2>
+              <p class="pull">A bad recommendation costs trust.</p>
+              <p>That is the safety problem. AI in these settings has to sit inside a bounded system where risk assessment is real, and every output has to be traceable and honest.</p>
+            </section>
 
-          <section class="block" aria-labelledby="next">
-            <h2 class="label label--accent" id="next">Where it goes next</h2>
-            <p>Changing the abstraction and representation of the event, or of the order itself, to give a language model real situational awareness.</p>
-          </section>
-        </article>
+            <section aria-labelledby="where" data-reveal>
+              <h2 class="label" id="where">Where it goes next</h2>
+              <p>Changing the abstraction and representation of the event, or of the order itself, to give CIPHER and commanders true situational awareness.</p>
+            </section>
+          </article>
 
-        <!-- ===== Aside ===== -->
-        <aside class="project-aside" aria-label="About this project">
-          <section class="panel panel--disclosure">
-            <div class="disclosure__item">
-              <h2 class="label label--cool">This page contains</h2>
-              <p>The high-level idea, what the I/ITSEC paper makes public, and where the work is going.</p>
-            </div>
-            <div class="disclosure__item">
-              <h2 class="label label--cool">This page does not contain</h2>
-              <p>Draper proprietary design, code, or data, and no operational material. If a detail seems missing, it is missing on purpose.</p>
-            </div>
-          </section>
+          <!-- ===== Aside ===== -->
+          <aside class="p-aside" aria-label="About this project">
+            <section class="p-panel" data-reveal>
+              <div>
+                <h2 class="label">This page contains</h2>
+                <p>The high-level idea, what the I/ITSEC paper makes public, and where the work has actively gone.</p>
+              </div>
+              <div>
+                <h2 class="label">This page does not contain</h2>
+                <p>Draper proprietary design, code, or data, and no operational material.</p>
+              </div>
+            </section>
 
-          <section class="panel">
-            <h2 class="h3">Why this is here</h2>
-            <p>For Multisensory Intelligence, this is the safety half of my work: keeping a model’s recommendations traceable and honest when a person has to act on them. For Responsive Environments, it is the human-facing layer that AI-Firmware’s sensing would feed.</p>
-          </section>
+            <section class="p-panel" data-reveal>
+              <h2>Why it matters</h2>
+              <p>This is the human-computer interaction half of my work: keeping a model’s recommendations traceable and honest while also aiding their situational awareness for action. It is part of the human-facing layer that my objectives outline.</p>
+            </section>
 
-          <section class="fact">
-            <h2 class="label">Publication</h2>
-            <p>“Retrieval-Augmented LLMs for Military Decision Support and Evaluation.” L. Kim*, J. Nawfel*, R. Dougherty, C. Berger, K. Hale, A. Webb, K. Yau, M. Petrimoulx, T. T. Brunyé, W. Elmore, J. A. Cantelon. I/ITSEC 2026, Orlando, 30 November – 4 December 2026. Paper No. 26201. *Equal contribution.</p>
-          </section>
+            <section data-reveal>
+              <h2 class="label">Publication</h2>
+              <p>“Retrieval-Augmented LLMs for Military Decision Support and Evaluation.” L. Kim*, J. Nawfel*, R. Dougherty, C. Berger, K. Hale, A. Webb, K. Yau, M. Petrimoulx, T. T. Brunyé, W. Elmore, J. A. Cantelon. I/ITSEC 2026, Orlando, 30 November – 4 December 2026. Paper No. 26201. *Equal contribution.</p>
+            </section>
 
-          <section class="fact">
-            <h2 class="label">Related</h2>
-            <ul>
-              <li><a href="ai-firmware.html">AI-Firmware</a></li>
-              <li><a href="gfm-interp.html">GFM-Interp</a></li>
-            </ul>
-          </section>
-        </aside>
+            <section data-reveal>
+              <h2 class="label">Related</h2>
+              <ul role="list">
+                <li><a href="ai-firmware.html">AI-Firmware</a></li>
+                <li><a href="gfm-interp.html">GFM-Interp</a></li>
+              </ul>
+            </section>
+          </aside>
 
+        </div>
       </div>
     </div>
   </main>
 
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer"><div class="wrap">Cameron Berger · 2026</div></footer>
+  <!-- ===== Next: a doorway into 03, in its own colours ===== -->
+  <div class="p-end scheme-indigo">
+    <nav class="p-next" aria-label="Next project" data-vt-item>
+      <a class="wrap" href="gfm-interp.html">
+        <span class="label">Next · <span class="vt-num" data-vt="num-gfm-interp">03</span></span>
+        <span class="p-next__title" data-vt="title-gfm-interp">GFM-Interp</span>
+      </a>
+    </nav>
+    <footer class="site-footer"><div class="wrap"><p>Cameron Berger · 2026</p></div></footer>
+  </div>
 </body>
 </html>
