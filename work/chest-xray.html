@@ -59,7 +59,7 @@
         <dl class="p-meta" data-reveal>
           <div><dt class="label">Years</dt><dd>2025–2026 · Independent research</dd></div>
           <div><dt class="label">My role</dt><dd>Sole researcher and engineer</dd></div>
-          <div><dt class="label">Status</dt><dd>Second version complete, October 2026.</dd></div>
+          <div><dt class="label">Status</dt><dd>Third version complete, October 2026.</dd></div>
         </dl>
 
         <!-- ===== Figure ===== -->
@@ -82,13 +82,13 @@
               <span class="diagram__arrow" aria-hidden="true">→</span>
               <div class="diagram__col diagram__col--center">
                 <p class="diagram__head"><span class="n">3</span>Combine</p>
-                <p class="diagram__box"><b>One classifier</b><span>Image and text side by side; attention that lets the text steer was tested and added nothing</span></p>
+                <p class="diagram__box"><b>One classifier</b><span>Image and text side by side. Letting the text steer attention didn’t help</span></p>
               </div>
               <span class="diagram__arrow" aria-hidden="true">→</span>
               <p class="diagram__end">12 findings</p>
             </div>
           </div>
-          <figcaption>Fig. 1 · Only what existed before the <span class="nowrap">X-ray</span> goes in. The report the labels come from never does. The <span class="nowrap">X-rays</span> themselves cannot be shown here: the data use agreement forbids it.</figcaption>
+          <figcaption>Fig. 1 · Only text written before the <span class="nowrap">X-ray</span> goes in, never the report the labels come from. The <span class="nowrap">X-rays</span> themselves can’t be shown here; the data use agreement doesn’t allow it.</figcaption>
         </figure>
 
         <div class="p-columns">
@@ -106,7 +106,7 @@
 
             <section aria-labelledby="built" data-reveal>
               <h2 class="label" id="built">What I built</h2>
-              <p>A pipeline that reads each chest <span class="nowrap">X-ray</span> in <span class="nowrap">MIMIC-CXR</span> together with the text written before it: why the exam was ordered, the emergency department’s chief complaint, and the patient’s last report. It starts from RAD-DINO, an image encoder already pretrained on 883,000 chest <span class="nowrap">X-rays</span>, and scores every model the way published work does, so the numbers can be compared.</p>
+              <p>A pipeline that reads each chest <span class="nowrap">X-ray</span> in <span class="nowrap">MIMIC-CXR</span> along with what was written before it: why the exam was ordered, the ER chief complaint, and the patient’s last report. It starts from RAD-DINO, an image model already trained on 883,000 chest <span class="nowrap">X-rays</span>.</p>
             </section>
 
             <section aria-labelledby="how" data-reveal>
@@ -115,17 +115,17 @@
                 <li class="step">
                   <span class="step__n" aria-hidden="true">1</span>
                   <h3>Select</h3>
-                  <p>One frontal image per study, and only text that existed before the <span class="nowrap">X-ray</span>.</p>
+                  <p>One front-view image per study, and only text from before the scan.</p>
                 </li>
                 <li class="step">
                   <span class="step__n" aria-hidden="true">2</span>
                   <h3>Train</h3>
-                  <p>Fine-tune RAD-DINO at 518 px for three epochs, about 50 minutes on one GPU.</p>
+                  <p>Fine-tune RAD-DINO for three epochs, about 50 minutes on one GPU.</p>
                 </li>
                 <li class="step">
                   <span class="step__n" aria-hidden="true">3</span>
                   <h3>Score</h3>
-                  <p>Make every choice on a validation split, then score each test set once, with a 95% interval.</p>
+                  <p>Make every choice on a validation split, then score each test set once.</p>
                 </li>
               </ol>
             </section>
@@ -141,7 +141,7 @@
 
             <section data-reveal>
               <h2 class="label">Tools</h2>
-              <p>Python, PyTorch, Hugging Face Transformers, scikit-learn, pandas. Models: RAD-DINO, MedSigLIP, DINOv2 and DenseNet-121; TF-IDF, BERT, BiomedBERT and ClinicalBERT. Data: <span class="nowrap">MIMIC-CXR-JPG</span> 2.1.0 and its reports, <span class="nowrap">MIMIC-IV-ED</span> 2.2, <span class="nowrap">MIMIC-IV</span> 3.1, and the CheXpert test set. Compute: a laptop, plus 8.5 hours of rented A100 and GH200 time.</p>
+              <p>Python, PyTorch, Hugging Face Transformers, scikit-learn, pandas. Models: RAD-DINO, MedSigLIP, DINOv2 and DenseNet-121; TF-IDF, BERT, BiomedBERT and ClinicalBERT. Data: <span class="nowrap">MIMIC-CXR-JPG</span> 2.1.0 and its reports, <span class="nowrap">MIMIC-IV-ED</span> 2.2, <span class="nowrap">MIMIC-IV</span> 3.1, and the CheXpert test set. v3 also tried TypeSafe’s Jev. Compute: a laptop, plus about 16 hours of rented A100, GH200 and H100 time.</p>
             </section>
 
             <!-- No paper: this is a self-contained project. The repo holds the code and
@@ -182,8 +182,8 @@
           <div class="p-result__text" data-reveal>
             <h3 class="label" id="r-bench">The standard benchmark</h3>
             <p class="p-result__stat">0.815</p>
-            <p class="p-result__note">with the reason for the exam, against 0.794 for the best published model with the same inputs</p>
-            <p>From the image alone, the fine-tuned model scores 0.807 on <span class="nowrap">MIMIC-CXR’s</span> official test split, scored the way published models are. With all the text written before the <span class="nowrap">X-ray</span> it reaches 0.825.</p>
+            <p class="p-result__note">with the reason for the exam. The best published model with the same inputs gets 0.794.</p>
+            <p>From the image alone it scores 0.807 on <span class="nowrap">MIMIC-CXR’s</span> official test split. Adding everything written before the <span class="nowrap">X-ray</span> brings it to 0.825.</p>
           </div>
           <div class="p-result__chart">
             <!-- cxr chart: bench: start -->
@@ -203,8 +203,8 @@
           <div class="p-result__text" data-reveal>
             <h3 class="label" id="r-text">What the text adds</h3>
             <p class="p-result__stat">+0.016</p>
-            <p class="p-result__note">from all the text written before the <span class="nowrap">X-ray</span>, joined to the image</p>
-            <p>The reason for the exam and the last report carry most of it. Vital signs, age and sex add nothing. How the text joins the image matters little, and simple word counts do as well as medical language models.</p>
+            <p class="p-result__note">from all the text written before the <span class="nowrap">X-ray</span></p>
+            <p>Most of it comes from the reason for the exam and the last report. Vital signs, age, and sex add nothing.</p>
           </div>
           <div class="p-result__chart">
             <!-- cxr chart: text: start -->
@@ -224,8 +224,8 @@
           <div class="p-result__text" data-reveal>
             <h3 class="label" id="r-radiologist">Graded by a radiologist</h3>
             <p class="p-result__stat">+0.029</p>
-            <p class="p-result__note">when a radiologist’s labels replace the automatic labeler’s, on the same 596 studies</p>
-            <p>The biggest gains are on pneumonia and an enlarged heart, where the labeler calls more positives than the radiologist. The labels, not the model, were holding the scores down.</p>
+            <p class="p-result__note">when a radiologist’s labels replace the automatic ones, on the same 596 studies</p>
+            <p>The biggest jumps are pneumonia and an enlarged heart, where the automatic labeler flags more cases than the radiologist does. The model was better than its labels made it look.</p>
           </div>
           <div class="p-result__chart">
             <!-- cxr chart: radiologist: start -->
@@ -245,8 +245,8 @@
           <div class="p-result__text" data-reveal>
             <h3 class="label" id="r-chexpert">Another hospital</h3>
             <p class="p-result__stat">0.904</p>
-            <p class="p-result__note">on five findings at Stanford, without ever seeing a CheXpert label</p>
-            <p>Level with CheXzero and KAD, two published models trained on <span class="nowrap">MIMIC-CXR</span>. The lead over CheXzero is all atelectasis. A second training seed moves every score by 0.002 at most.</p>
+            <p class="p-result__note">on five findings at Stanford, without training on a single CheXpert label</p>
+            <p>That puts it level with CheXzero and KAD, two published models trained on <span class="nowrap">MIMIC-CXR</span>, and almost all of the lead over CheXzero is atelectasis. Retraining with a new seed moves every score by 0.002 at most.</p>
           </div>
           <div class="p-result__chart">
             <!-- cxr chart: chexpert: start -->
@@ -264,16 +264,16 @@
       </div>
     </section>
 
-    <!-- ===== From v1 to v2 ===== -->
+    <!-- ===== From v1 to v3 ===== -->
     <section class="p-history" aria-labelledby="v1v2">
       <div class="wrap">
-        <h2 class="label" id="v1v2" data-reveal>From v1 to v2</h2>
+        <h2 class="label" id="v1v2" data-reveal>From v1 to v3</h2>
         <div class="p-result" role="group" aria-labelledby="r-moved">
           <div class="p-result__text" data-reveal>
             <h3 class="label" id="r-moved">How the number moved</h3>
             <p class="p-result__stat">0.701 <span class="p-result__arrow" aria-hidden="true">→</span> 0.823</p>
             <p class="p-result__note">on v1’s own test split</p>
-            <p>v1 trained everything from scratch, and a review of its code made its 0.701 hard to trust. v2 kept the question and the twelve findings, and changed the rest.</p>
+            <p>v1 built everything from scratch. For v2 I kept the question and the twelve findings and rebuilt the rest.</p>
           </div>
           <div class="p-result__chart">
             <!-- cxr chart: staircase: start -->
@@ -289,24 +289,44 @@
           </div>
         </div>
 
-        <h3 class="label p-history__sub" data-reveal>What changed</h3>
+        <div class="p-result p-result--flip" role="group" aria-labelledby="r-v3">
+          <div class="p-result__text" data-reveal>
+            <h3 class="label" id="r-v3">v3 · A bigger model</h3>
+            <p class="p-result__stat">0 of 3</p>
+            <p class="p-result__note">jobs where TypeSafe’s Jev beat v2’s simple tools</p>
+            <p>For v3 I tested whether a large hosted model could do better. Jev took three jobs: final classifier, report labeler and source of training labels. It lost or tied every time. Its one big win, on Stanford’s test set, came from how two findings are labeled there, and a one-line rule gets most of it back.</p>
+          </div>
+          <div class="p-result__chart">
+            <!-- cxr chart: jev: start -->
+              <figure class="p-chart" data-reveal>
+                <div class="p-chart__panel">
+                  <p class="p-chart__sub">Jev minus v2’s simpler tool for each job, macro AUROC with 95% intervals.</p>
+                  <div class="hc" role="img" aria-label="Jev minus v2&#x27;s simpler tool, in macro AUROC: as the final classifier −0.024, as a report labeler −0.026, as training labels +0.005 on the CheXpert test set and +0.001 on the MIMIC radiologist&#x27;s studies, both within noise."><div class="hc__row"><span class="hc__label">As the final classifier<i>against a logistic regression with the same inputs</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--text" style="left:32.50%;width:30.00%"></span><span class="hc__ci hc--pub" style="left:21.25%;width:21.25%"></span></span><span class="hc__val">−0.024</span></div><div class="hc__row"><span class="hc__label">As a report labeler<i>against the CheXpert labeler, judged by a radiologist</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--text" style="left:30.00%;width:32.50%"></span><span class="hc__ci hc--pub" style="left:11.25%;width:38.75%"></span></span><span class="hc__val">−0.026</span></div><div class="hc__row"><span class="hc__label">As training labels, Stanford<i>against CheXpert labels with the one-line rule</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--pub" style="left:62.50%;width:6.25%"></span><span class="hc__ci hc--pub" style="left:62.50%;width:12.50%"></span></span><span class="hc__val">+0.005</span></div><div class="hc__row"><span class="hc__label">As training labels, MIMIC<i>against CheXpert labels, judged by a radiologist</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--pub" style="left:62.50%;width:1.25%"></span><span class="hc__ci hc--pub" style="left:43.75%;width:41.25%"></span></span><span class="hc__val">+0.001</span></div><div class="hc__row hc__row--axis"><span></span><span class="hc__track hc__track--axis"><span class="hc__tick" style="left:12.50%">−0.04</span><span class="hc__tick" style="left:37.50%">−0.02</span><span class="hc__tick" style="left:62.50%">0</span><span class="hc__tick" style="left:87.50%">+0.02</span></span><span></span></div></div>
+                  <ul class="p-chart__legend" role="list"><li><span class="hc__swatch hc--text" aria-hidden="true"></span>Jev worse, interval below zero</li><li><span class="hc__swatch hc--pub" aria-hidden="true"></span>no clear difference</li></ul>
+                </div>
+                <figcaption>Fig. 7 · v3’s three jobs for TypeSafe’s Jev. For training labels the first seed is shown; the second matches.</figcaption>
+              </figure>
+            <!-- cxr chart: jev: end -->
+          </div>
+        </div>
+
+        <h3 class="label p-history__sub" data-reveal>What changed in v2</h3>
         <dl class="p-changes" data-reveal>
           <div><dt>Measurement</dt><dd>v1 picked its best epoch on its own test set. v2 scores each test set once.</dd></div>
           <div><dt>Images</dt><dd>31% of v1’s images were side views. v2 uses one frontal image per study.</dd></div>
-          <div><dt>Studies</dt><dd>A time bug dropped most morning studies. v2 uses all 218,000 frontal ones.</dd></div>
+          <div><dt>Studies</dt><dd>A time-parsing bug dropped most morning studies. v2 uses all 218,000 frontal ones.</dd></div>
           <div><dt>Text</dt><dd>v1’s text held data from after the <span class="nowrap">X-ray</span>. v2 uses only what came before.</dd></div>
-          <div><dt>Fusion</dt><dd>v1’s cross-attention acted as a plain linear layer. v2 adds the text at the end.</dd></div>
-          <div><dt>Cost</dt><dd>v1: one run, 36 hours, $54. v2: everything, 8.5 hours, about $18.</dd></div>
+          <div><dt>Fusion</dt><dd>v1’s cross-attention was really just a linear layer. v2 simply adds the text at the end.</dd></div>
         </dl>
 
         <div class="p-limits" data-reveal>
           <div>
             <h3 class="label" id="limits">Limits</h3>
-            <p>Labels from an automatic labeler, which understates every model by about 0.03. Frontal images only. RAD-DINO saw both datasets’ training images, never their test images.</p>
+            <p>The labels come from an automatic labeler that undersells every model by about 0.03. Only front views are used.</p>
           </div>
           <div>
             <h3 class="label" id="next">What’s next</h3>
-            <p>Stanford’s clinical histories read with the image, higher resolution, and a hospital RAD-DINO has never seen.</p>
+            <p>Read Stanford’s clinical histories alongside the image, try higher resolution, and test at a hospital RAD-DINO has never seen.</p>
           </div>
         </div>
       </div>
@@ -320,7 +340,7 @@
     <section class="p-layer" aria-labelledby="v2-reads">
       <div class="wrap">
         <h2 class="label" id="v2-reads" data-reveal>v2 · How it reads an <span class="nowrap">X-ray</span></h2>
-        <p class="p-layer__lede" data-reveal>Each of the twelve findings learns which patches to weigh. The text written before the <span class="nowrap">X-ray</span> adjusts the score.</p>
+        <p class="p-layer__lede" data-reveal>Each of the twelve findings learns which patches of the image to focus on, and the text written before the <span class="nowrap">X-ray</span> nudges the score.</p>
 
         <figure class="p-figure">
           <!-- v2 panels: start -->
@@ -343,26 +363,26 @@
             </li>
           </ol>
           <!-- v2 panels: end -->
-          <figcaption data-reveal>Fig. 7 · Drawn on v1’s made-up chest below. The note and the scores are illustrative.</figcaption>
+          <figcaption data-reveal>Fig. 8 · Drawn on the same made-up chest as v1’s below. The note and the scores are made up.</figcaption>
         </figure>
 
         <div class="p-limits">
           <section aria-labelledby="v2-parts" data-reveal>
             <h3 class="label" id="v2-parts">What each part does</h3>
-            <p>Chest <span class="nowrap">X-ray</span> pretraining +0.060. Weighing the patches +0.015. Fine-tuning +0.010. The text about +0.02.</p>
+            <p>Pretraining on chest <span class="nowrap">X-rays</span>: +0.060. Letting each finding pick its patches: +0.015. Fine-tuning: +0.010. The text: about +0.02.</p>
           </section>
           <section aria-labelledby="v2-unseen" data-reveal>
-            <h3 class="label" id="v2-unseen">What it does not see</h3>
-            <p>The side view, detail finer than 518 pixels, and anything written after the <span class="nowrap">X-ray</span>.</p>
+            <h3 class="label" id="v2-unseen">What it doesn’t see</h3>
+            <p>Side views, detail finer than 518 pixels, or anything written after the <span class="nowrap">X-ray</span>.</p>
           </section>
         </div>
       </div>
     </section>
 
     <!-- ===== Anomaly detection: a second plate =====
-         How v1’s masked autoencoder doubles as an anomaly detector. Fig. 8 draws
+         How v1’s masked autoencoder doubles as an anomaly detector. Fig. 9 draws
          the method on a made-up chest, never a patient; its four panels are
-         generated, between the "panels" markers. Fig. 9's numbers are averages
+         generated, between the "panels" markers. Fig. 10's numbers are averages
          over the validation split, from the project repo (MAE reconstruction
          analysis, January 2026). -->
     <section class="p-layer p-layer--alt" aria-labelledby="anomaly">
@@ -391,19 +411,19 @@
             </li>
           </ol>
           <!-- panels: end -->
-          <figcaption data-reveal>Fig. 8 · Drawn on a made-up chest: <span class="nowrap">MIMIC-CXR</span> images cannot be shown.</figcaption>
+          <figcaption data-reveal>Fig. 9 · Drawn on a made-up chest, since <span class="nowrap">MIMIC-CXR</span> images can’t be shown.</figcaption>
         </figure>
 
         <div class="p-columns">
           <div class="p-main">
             <section aria-labelledby="anomaly-found" data-reveal>
               <h3 class="label" id="anomaly-found">What it found</h3>
-              <p>Over 4,922 abnormal studies, it rebuilt pleural changes, collapsed lungs, pneumonia and fractures worst. Consolidation, surprisingly, it rebuilt best (Fig. 9).</p>
+              <p>Across 4,922 abnormal studies, it had the most trouble rebuilding pleural changes, collapsed lungs, pneumonia and fractures. Oddly, consolidation was the easiest (Fig. 10).</p>
             </section>
 
             <section aria-labelledby="anomaly-open" data-reveal>
-              <h3 class="label" id="anomaly-open">What it has not shown</h3>
-              <p>The averages only rank sick chests against each other, and the detector was never scored on normal against abnormal. v2 set anomaly scores aside: they cannot say which finding is present.</p>
+              <h3 class="label" id="anomaly-open">What it didn’t show</h3>
+              <p>These averages only compare sick chests to each other. I never tested whether the error actually separates normal from abnormal. In v2 I dropped anomaly scores, because they can’t tell you which finding is there.</p>
             </section>
           </div>
 
@@ -423,7 +443,7 @@
               <li style="--v: 0.461; --t: 0.113; --i: 11"><span>Support devices</span><span class="bars__val">4.18</span><span class="bars__bar" aria-hidden="true"></span></li>
               <li style="--v: 0.393; --t: 0; --i: 12"><span>Consolidation</span><span class="bars__val">3.56</span><span class="bars__bar" aria-hidden="true"></span></li>
             </ol>
-            <figcaption>Fig. 9 · Average reconstruction error by finding, mean squared error <span class="nowrap">× 10<sup>−4</sup></span>.</figcaption>
+            <figcaption>Fig. 10 · Average reconstruction error by finding, mean squared error <span class="nowrap">× 10<sup>−4</sup></span>.</figcaption>
           </figure>
         </div>
       </div>

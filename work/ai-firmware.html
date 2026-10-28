@@ -54,7 +54,7 @@
         <dl class="p-meta" data-reveal>
           <div><dt class="label">Years</dt><dd>2026 · Draper Laboratory</dd></div>
           <div><dt class="label">My role</dt><dd>Lead investigator and engineer</dd></div>
-          <div><dt class="label">Status</dt><dd>Early positive results. Described at a high level pending release.</dd></div>
+          <div><dt class="label">Status</dt><dd>Working on its test devices and its first real firmware, October 2026.</dd></div>
         </dl>
 
         <!-- ===== Figure ===== -->
@@ -71,7 +71,7 @@
               <span class="diagram__arrow" aria-hidden="true">→</span>
               <div class="diagram__col">
                 <p class="diagram__head"><span class="n">2</span>Probe</p>
-                <p class="diagram__box"><b>Probe</b><span>Run the model on the real device as written.</span></p>
+                <p class="diagram__box"><b>Probe</b><span>Run the model on the device as written.</span></p>
                 <p class="diagram__box"><b>Ground</b><span>Check each claim against a separate observation of the device.</span></p>
               </div>
               <span class="diagram__arrow" aria-hidden="true">→</span>
@@ -99,7 +99,7 @@
 
             <section aria-labelledby="built" data-reveal>
               <h2 class="label" id="built">What I built</h2>
-              <p>A toolkit that pulls the flash from a microcontroller and hands the binary to an agent. The agent reads the code, tests what each function does on the real hardware, and writes a standard interface for the device. Capable of running offline on the edge.</p>
+              <p>A toolkit that pulls the flash from a microcontroller and hands the binary to an agent. The agent reads the code, tests what each function does on the running device, and writes a standard interface for the device. Capable of running offline on the edge.</p>
               <p>At Draper, I am pointing it at the bio lab: the sensors and equipment that run PREDICT96, Draper’s organ-on-chip platform for testing drugs on human tissue, allowing us to build and run agentically controlled experiments through the driver.</p>
             </section>
 
@@ -114,7 +114,7 @@
                 <li class="step">
                   <span class="step__n" aria-hidden="true">2</span>
                   <h3>Probe</h3>
-                  <p>It guesses what each function does and tests the guess on the live hardware.</p>
+                  <p>It guesses what each function does and tests the guess on the running device.</p>
                 </li>
                 <li class="step">
                   <span class="step__n" aria-hidden="true">3</span>
@@ -126,8 +126,8 @@
 
             <section aria-labelledby="result" data-reveal>
               <h2 class="label" id="result">Result</h2>
-              <p class="pull">On an emulated, never-before-seen microcontroller benchmark, the agent finished each one end-to-end with no human input. Both drivers passed every final functional equivalence check, and a fresh agent used each one to reach a goal.</p>
-              <p>One attempt per device, on a public benchmark: the two drivers passed 9 of 9 and 85 of 85 final checks, in about ten minutes each.</p>
+              <p class="pull">On its test devices and on its first real firmware, every run ended with a working driver that a fresh agent could pick up and use.</p>
+              <p>The real one is a Modbus server from the Zephyr RTOS, the kind of protocol industrial equipment talks in, run with its application code unchanged. All three runs passed every one of 315 checks. Across the five test setups, all 15 fresh runs passed, including a parameter store that used to trip over two-line error replies (891 of 891 checks). Six more real firmware projects are lined up but can’t run yet, and nothing has touched physical hardware so far.</p>
             </section>
 
             <section aria-labelledby="next" data-reveal>
@@ -145,7 +145,7 @@
 
             <section data-reveal>
               <h2 class="label">Tools</h2>
-              <p>Python, with Java for Ghidra scripts. Agents run in the OpenAI Codex CLI and reach the toolkit over MCP. Ghidra (headless decompilation), Renode (emulated STM32 devices), the Arm GNU toolchain, and esptool. pyserial, pyusb, and pyftdi over UART, I²C, SPI, USB, and TCP.</p>
+              <p>Python, with Java for Ghidra scripts. Agents run in the OpenAI Codex CLI and reach the toolkit over MCP. Ghidra (headless decompilation), Renode (emulated STM32 devices), Zephyr’s native simulator, the Arm GNU toolchain, and esptool. pyserial, pyusb, and pyftdi over UART, I²C, SPI, USB, and TCP.</p>
             </section>
 
             <section data-reveal>
