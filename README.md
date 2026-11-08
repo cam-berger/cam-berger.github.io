@@ -26,7 +26,7 @@ This folder is the whole website: hand-written HTML, one stylesheet and the imag
 
 ```
 portfolio-site/
-├── index.html              Home: the question, work, art (the gallery wall), writing, contact
+├── index.html              Home: who I am and my research interests, work, art (the gallery wall), writing, contact
 ├── 404.html                Shown by GitHub Pages for any address that does not exist
 ├── work/
 │   ├── ai-firmware.html    01 · copper room
