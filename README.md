@@ -89,6 +89,8 @@ Classes and attributes you will meet most often:
 | `p-panel` | A step of colour behind a block, such as “Why it matters” |
 | `diagram`, `diagram__…` | A diagram drawn in HTML, which reflows on a phone |
 | `p-figure__mat` | The paper behind a figure that was drawn on white |
+| `hero__grid`, `hero__art`, `areas` | The home page’s opener: the name, the description, one drawing (which also hangs on the wall below) and the research interests |
+| `door`, `door__…` | The home page’s Work list: one full-width band per project, in that project’s scheme class and art, the whole band a link |
 | `wall__…`, `artwork` | The home page’s gallery wall |
 | `p-work` | One work on the 05 page |
 | `gfm`, `gfm__…`, `g-…` | GFM-Interp’s two figures, drawn from the paper’s data by `incoming/scripts/gfm_figure.py` (its numbers are in `incoming/data/gfm_figures.json`); change them there, not by hand |
@@ -219,7 +221,7 @@ The comments at the top of `work/_template.html` walk through every step. In sho
 3. **Fill it in.** Replace every placeholder, including the title and description in the `<head>`, and delete the sections and comments you do not need. Keep the `noindex` tag until launch, like the other pages. Write plainly: what was done and what it showed, with the specifics.
 4. **Name its travellers.** In the hero, `data-vt="num-<slug>"` and `data-vt="title-<slug>"` let its number and title glide in from the home page.
 5. **Keep the doorways a loop.** The band at the foot of the new page leads to the next project, in that project’s scheme. Point the previous project’s band at the new page, and set `--next-hero` on each page’s `<html>` to the next room’s `--s-hero` colour.
-6. **Add it to the home page.** In `index.html`’s Work list, copy a whole `<li class="work-item" …>` and change its number, link, title, text, tag and `data-vt` names.
+6. **Add it to the home page.** In `index.html`’s Work list, copy a whole `<li class="door scheme-…" …>` and change its scheme class, number, link, title, text, tag and `data-vt` names.
 7. **Link it from Related** on the project pages it belongs with, and point its own Related links back.
 8. **Add it to `sitemap.xml`:**
    ```xml

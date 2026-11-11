@@ -162,10 +162,17 @@ section[id] { scroll-margin-top: 24px; }
 .nav .nav-cv:hover { color: var(--ink); }
 
 
-/* ---------- plate 1: who, and my research interests ---------- */
+/* ---------- plate 1: who, my research interests, and one drawing ----------
+   On a phone it is one column in reading order: name, description, the
+   drawing, research interests. From 900px the drawing hangs in a column of
+   its own on the right, beside all of the text, and the name is sized to
+   fill the column that is left (the cqi sum below). Spacing and type also
+   give way on a short screen (the vh terms), so the edge of the next plate
+   shows under the opener and the page reads as going on. */
 
-.hero { padding-block: clamp(80px, 10vw, 148px) clamp(80px, 9vw, 128px); }
-.hero .label { margin-bottom: clamp(24px, 3vw, 40px); }
+.hero { padding-block: clamp(40px, 9vh, 140px) clamp(44px, 8vh, 104px); }
+.hero__grid { --art-w: clamp(280px, 29vw, 460px); --art-gap: clamp(40px, 4.5vw, 72px); }
+.hero .label { margin-bottom: clamp(20px, 3vh, 40px); }
 /* the name, as large as the page allows */
 .hero h1 {
   font-size: clamp(60px, 10vw, 150px);
@@ -177,20 +184,68 @@ section[id] { scroll-margin-top: 24px; }
 /* who I am, in one line under the name */
 .hero__lede {
   max-width: 720px;
-  margin-top: clamp(24px, 3vw, 40px);
+  margin-top: clamp(20px, 3.4vh, 40px);
   font-size: clamp(20px, 2vw, 28px);
   line-height: 1.35;
   text-wrap: pretty;
   font-variation-settings: 'opsz' 32, 'wght' 350;
 }
 
+/* the drawing: an unframed sheet on the paper wall, and a way into the 05 room */
+.hero__art { max-width: 420px; margin: clamp(36px, 6vh, 56px) 0 0; }
+.hero__art a { display: block; }
+.hero__art img {
+  width: 100%;
+  box-shadow: 0 18px 44px rgba(52, 40, 28, 0.2);
+  transition: transform var(--t-lift) var(--ease), box-shadow var(--t-lift) var(--ease);
+}
+.hero__art figcaption {
+  padding-top: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  font-variation-settings: 'opsz' 14, 'wght' 350;
+}
+.hero__art .medium { display: block; color: var(--ink-muted); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero__art a:hover img { transform: translateY(-6px); box-shadow: 0 28px 60px rgba(52, 40, 28, 0.26); }
+}
+
+/* a tablet: the drawing on the left, research interests beside it */
+@media (min-width: 640px) and (max-width: 899px) {
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
+    column-gap: 44px;
+  }
+  .hero__grid > * { grid-column: 1 / -1; }
+  .hero__grid > .hero__art { grid-column: 1; max-width: none; }
+  .hero__grid > .areas { grid-column: 2; margin-top: clamp(36px, 6vh, 56px); }
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--art-w);
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: var(--art-gap);
+  }
+  .hero__grid > * { grid-column: 1; }
+  .hero__art { grid-column: 2; grid-row: 1 / -1; align-self: center; max-width: none; margin: 0; }
+  /* "Cameron Berger" is about 5.8 times as wide as its type is tall */
+  .hero h1 {
+    font-size: clamp(60px, calc((100cqi - var(--art-w) - var(--art-gap)) / 5.95), 150px);
+    white-space: nowrap;
+  }
+}
+
 /* research interests: one bullet per area, large enough to read from the opener */
-.areas { margin-top: clamp(48px, 5vw, 72px); }
+.areas { margin-top: clamp(28px, 6vh, 72px); }
 .hero .areas .label { margin-bottom: 20px; font-size: clamp(13px, 1.2vw, 17px); letter-spacing: 0.18em; }
 .areas__list li {
   position: relative;
   padding-left: 0.8em;
-  font-size: clamp(24px, 2.6vw, 36px);
+  font-size: clamp(24px, min(2.6vw, 4.4vh), 36px);
   line-height: 1.3;
   font-variation-settings: 'opsz' 48, 'wght' 360;
 }
@@ -228,56 +283,100 @@ section[id] { scroll-margin-top: 24px; }
 .premise .voice { font-variation-settings: 'opsz' 32, 'wght' 350, 'SOFT' 30, 'WONK' 1; }
 
 
-/* ---------- plate 3: work ---------- */
+/* ---------- work: five doors ----------
+   Each project is a full-width band in its own room's scheme (see "Project
+   pages"), with the room's art held to the right so the words sit on plain
+   colour. The whole band is the link: the title's link is stretched over it.
+   Below 1024px each band stacks under its number. */
 
-.work { padding-block: clamp(96px, 10vw, 136px); }
-.work .label { margin-bottom: clamp(48px, 6vw, 78px); }
-
-/* One grid for the whole list, shared by every row through subgrid, so the
-   descriptions line up and the tag column is exactly as wide as its longest
-   tag. Below 1024px each row stacks under its number. */
-.work-list {
+.door {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--s-hero);
+  color: var(--s-text);
+}
+.door::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 auto;
+  width: min(34%, 600px);
+  background: var(--s-art) var(--s-art-pos) / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 48%);
+  mask-image: linear-gradient(90deg, transparent, #000 48%);
+}
+.door__row {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1.6fr) max-content;
+  grid-template-columns: 28px minmax(0, 0.9fr) minmax(0, 1.15fr) minmax(96px, 0.8fr);
+  grid-template-areas:
+    "n title text arrow"
+    ". tag   text arrow";
   column-gap: 44px;
-  row-gap: clamp(48px, 5.5vw, 76px);
-}
-.work-item {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: subgrid;
+  row-gap: 14px;
   align-items: baseline;
+  align-content: center;
+  min-height: clamp(240px, 18.4vw, 280px);   /* every door the same height */
+  padding-block: clamp(44px, 4.4vw, 64px);
 }
-.work-item__n { font-size: 12px; color: var(--frost); font-variation-settings: 'opsz' 12; }
-.work-item h3 {
+.door__n { grid-area: n; font-size: 12px; color: var(--s-label); font-variation-settings: 'opsz' 12; }
+.door h3 {
+  grid-area: title;
   font-size: clamp(30px, 2.8vw, 40px);
   line-height: 1.06;
   letter-spacing: -0.022em;
   font-variation-settings: 'opsz' 60, 'wght' 400;
 }
-.work-item h3 a {
-  text-decoration-color: transparent;   /* the underline arrives on hover */
-  text-underline-offset: 7px;
+.door h3 a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+  text-decoration-color: transparent;   /* the underline arrives with the pointer */
+  transition: text-decoration-color var(--t-quick) ease;
 }
-.work-item h3 a:hover { text-decoration-color: currentColor; }
-.work-item__text { font-size: 17px; line-height: 1.66; font-variation-settings: 'opsz' 20, 'wght' 330; }
-.work-item__tag {
+.door h3 a::after { content: ""; position: absolute; inset: 0; }   /* the whole band opens the room */
+.door__tag {
+  grid-area: tag;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--frost);
+  color: var(--s-label);
   font-variation-settings: 'opsz' 12;
+}
+.door__text {
+  grid-area: text;
+  max-width: 34em;
+  font-size: 17px;
+  line-height: 1.66;
+  font-variation-settings: 'opsz' 20, 'wght' 330;
+}
+.door__arrow {
+  grid-area: arrow;
+  justify-self: end;
+  align-self: center;
+  fill: none;
+  stroke: var(--s-accent);
+  stroke-width: 1.25;
+  transition: transform var(--t-quick) var(--ease);
+}
+.door:hover h3 a { text-decoration-color: var(--s-accent); }
+.door:hover .door__arrow { transform: translateX(8px); }
+@supports selector(:has(*)) {
+  .door h3 a:focus-visible { outline: none; }
+  .door:has(a:focus-visible) { outline: 2px solid currentColor; outline-offset: -8px; }
 }
 
 @media (max-width: 1023px) {
-  .work-list { grid-template-columns: 28px minmax(0, 1fr); column-gap: 20px; }
-  .work-item { row-gap: 14px; }
-  .work-item h3,
-  .work-item__text,
-  .work-item__tag { grid-column: 2; }
-  .work-item__tag { text-align: left; white-space: normal; }
+  .door::before { width: 58%; opacity: 0.55; }
+  .door__row {
+    grid-template-columns: 28px minmax(0, 1fr) 44px;
+    grid-template-areas:
+      "n title arrow"
+      ". tag   tag"
+      ". text  text";
+    column-gap: 20px;
+    row-gap: 10px;
+  }
+  .door__text { margin-top: 6px; }
+  .door__arrow { align-self: baseline; }
 }
 
 
@@ -708,10 +807,13 @@ html.page-project {
 .p-work { display: flex; align-items: flex-end; gap: clamp(28px, 4vw, 64px); scroll-margin-top: 48px; }
 .p-work + .p-work { margin-top: clamp(120px, 16vw, 240px); }
 .p-work:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+/* Sized from its own proportions (--ar, width over height, set on each
+   image), so its place is held before it loads and a link to one work lands
+   on that work: as wide as fits, and never taller than 90% of the screen. */
 .p-work img {
-  width: auto;
-  max-width: min(82%, 1240px);
-  max-height: 90vh;
+  flex: none;
+  width: min(82%, 1240px, calc(90vh * var(--ar, 1)));
+  height: auto;
   box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
 }
 .p-work figcaption { flex: 1 1 auto; font-size: 15px; line-height: 1.55; font-variation-settings: 'opsz' 16, 'wght' 350; }
@@ -719,7 +821,7 @@ html.page-project {
 .p-works .todo { color: var(--s-wall-muted); }
 @media (max-width: 719px) {
   .p-work, .p-work:nth-child(even) { flex-direction: column; align-items: flex-start; text-align: left; gap: 18px; }
-  .p-work img { max-width: 100%; max-height: none; }
+  .p-work img { width: 100%; }
 }
 
 
@@ -1128,11 +1230,11 @@ html.page-project {
 @media print {
   html, html.page-project { background: none; }
   .plate--1, .plate--2, .plate--3, .plate--4,
-  .p-hero, .p-body, .p-statement, .p-works, .p-end, .diagram, .p-panel { background: none; color: #000; }
-  .p-hero__art, .p-next { display: none; }
+  .p-hero, .p-body, .p-statement, .p-works, .p-end, .diagram, .p-panel, .door { background: none; color: #000; }
+  .p-hero__art, .p-next, .door::before, .door__arrow { display: none; }
   .p-hero { min-height: 0; }
   .p-hero .wrap { padding-top: 24px; }
-  .label, .work-item__n, .work-item__tag, .artwork .medium, .paper__meta { color: #444; }
+  .label, .door__n, .door__tag, .artwork .medium, .hero__art .medium, .paper__meta { color: #444; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
   .skip-link, .nav { display: none; }
   .artwork img { box-shadow: none; }

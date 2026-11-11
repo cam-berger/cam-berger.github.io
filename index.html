@@ -39,14 +39,25 @@
 
   <main id="main">
 
-    <!-- ===== Plate 1 · who, and my research interests ===== -->
+    <!-- ===== Plate 1 · who, my research interests, and one drawing =====
+         The name and the drawing are simply there; the rest settles in. The
+         drawing also hangs on the wall below, and both open it on the 05 page. -->
     <div class="hero plate--1">
-      <div class="wrap">
-        <div class="hero__inner">
-          <p class="label" data-reveal>Portfolio</p>
-          <h1 data-reveal>Cameron Berger</h1>
-          <p class="hero__lede" data-reveal>AI Engineer and Researcher at Draper Laboratory, Nuclear Engineer, Submarine Veteran, and Artist.</p>
-        </div>
+      <div class="wrap hero__grid">
+        <p class="label">Portfolio</p>
+        <h1>Cameron Berger</h1>
+        <p class="hero__lede" data-reveal>AI Engineer and Researcher at Draper Laboratory, Nuclear Engineer, Submarine Veteran, and Artist.</p>
+        <figure class="hero__art" data-vt-item>
+          <a href="work/drawing.html#little-life">
+            <img data-vt="art-little-life" src="assets/img/art/curled-figure-toned-800.webp"
+                 srcset="assets/img/art/curled-figure-toned-800.webp 800w, assets/img/art/curled-figure-toned-1308.webp 1308w"
+                 sizes="(min-width: 900px) 29vw, (min-width: 640px) 420px, calc(100vw - 40px)"
+                 width="800" height="845"
+                 alt="Graphite drawing of a man, folded into a physical manifestation of grief."
+                 fetchpriority="high" decoding="async">
+          </a>
+          <figcaption><em>A little life</em>, 2024<span class="medium">Graphite on Bristol board</span></figcaption>
+        </figure>
         <section class="areas" aria-labelledby="areas-title">
           <h2 class="label" id="areas-title" data-reveal>Research interests</h2>
           <ul class="areas__list" role="list" data-reveal>
@@ -68,49 +79,65 @@
       </div>
     </div>
 
-    <!-- ===== Plate 3 · Work ===== -->
-    <section class="work plate--3" id="work" aria-labelledby="work-title">
-      <div class="wrap">
-        <h2 class="label" id="work-title" data-reveal>Work</h2>
-        <ol class="work-list" role="list">
+    <!-- ===== Work: five doors =====
+         Each project is a band in its own room's colours and art (the scheme
+         classes in main.css), and the whole band opens that room, like the
+         "next" band at the foot of every project page. -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <h2 class="sr-only" id="work-title">Work</h2>
+      <ol class="doors" role="list">
 
-          <li class="work-item" data-reveal data-vt-item>
-            <span class="work-item__n vt-num" aria-hidden="true" data-vt="num-ai-firmware">01</span>
+        <li class="door scheme-copper" data-vt-item>
+          <div class="wrap door__row" data-reveal>
+            <span class="door__n vt-num" aria-hidden="true" data-vt="num-ai-firmware">01</span>
             <h3 data-vt="title-ai-firmware"><a href="work/ai-firmware.html">AI-Firmware</a></h3>
-            <p class="work-item__text">Provide an agent with the firmware for a device it has never seen. Reverse-engineer what that device does and write a standard, reusable interface for downstream tasks.</p>
-            <p class="work-item__tag">Embedded</p>
-          </li>
+            <p class="door__tag">Embedded</p>
+            <p class="door__text">Provide an agent with the firmware for a device it has never seen. Reverse-engineer what that device does and write a standard, reusable interface for downstream tasks.</p>
+            <svg class="door__arrow" viewBox="0 0 44 16" width="44" height="16" aria-hidden="true" focusable="false"><path d="M0 8h42M35 1l7 7-7 7"/></svg>
+          </div>
+        </li>
 
-          <li class="work-item" data-reveal data-vt-item>
-            <span class="work-item__n vt-num" aria-hidden="true" data-vt="num-cipher">02</span>
+        <li class="door scheme-sage" data-vt-item>
+          <div class="wrap door__row" data-reveal>
+            <span class="door__n vt-num" aria-hidden="true" data-vt="num-cipher">02</span>
             <h3 data-vt="title-cipher"><a href="work/cipher.html">CIPHER</a></h3>
-            <p class="work-item__text">An AI assistant that processes information-dense documents to provide useful decision support for Army commanders at the front lines. To appear at I/ITSEC 2026.</p>
-            <p class="work-item__tag">HUMAN–AI-INTERACTION</p>
-          </li>
+            <p class="door__tag">HUMAN–AI-INTERACTION</p>
+            <p class="door__text">An AI assistant that processes information-dense documents to provide useful decision support for Army commanders at the front lines. To appear at I/ITSEC 2026.</p>
+            <svg class="door__arrow" viewBox="0 0 44 16" width="44" height="16" aria-hidden="true" focusable="false"><path d="M0 8h42M35 1l7 7-7 7"/></svg>
+          </div>
+        </li>
 
-          <li class="work-item" data-reveal data-vt-item>
-            <span class="work-item__n vt-num" aria-hidden="true" data-vt="num-gfm-interp">03</span>
+        <li class="door scheme-indigo" data-vt-item>
+          <div class="wrap door__row" data-reveal>
+            <span class="door__n vt-num" aria-hidden="true" data-vt="num-gfm-interp">03</span>
             <h3 data-vt="title-gfm-interp"><a href="work/gfm-interp.html">GFM-Interp</a></h3>
-            <p class="work-item__text">Applying mechanistic interpretability techniques to a masked genomic foundation model reveals a donor-acceptor computation.</p>
-            <p class="work-item__tag">Interpretability</p>
-          </li>
+            <p class="door__tag">Interpretability</p>
+            <p class="door__text">Applying mechanistic interpretability techniques to a masked genomic foundation model reveals a donor-acceptor computation.</p>
+            <svg class="door__arrow" viewBox="0 0 44 16" width="44" height="16" aria-hidden="true" focusable="false"><path d="M0 8h42M35 1l7 7-7 7"/></svg>
+          </div>
+        </li>
 
-          <li class="work-item" data-reveal data-vt-item>
-            <span class="work-item__n vt-num" aria-hidden="true" data-vt="num-chest-xray">04</span>
+        <li class="door scheme-film" data-vt-item>
+          <div class="wrap door__row" data-reveal>
+            <span class="door__n vt-num" aria-hidden="true" data-vt="num-chest-xray">04</span>
             <h3 data-vt="title-chest-xray"><a href="work/chest-xray.html">Multimodal chest <span class="nowrap">X-ray</span></a></h3>
-            <p class="work-item__text">Can clinical context make a chest <span class="nowrap">X-ray</span> classifier better? A pretrained image encoder fused with text written before the <span class="nowrap">X-ray</span>, across twelve <span class="nowrap">MIMIC-CXR</span> findings.</p>
-            <p class="work-item__tag">Multimodal ML</p>
-          </li>
+            <p class="door__tag">Multimodal ML</p>
+            <p class="door__text">Can clinical context make a chest <span class="nowrap">X-ray</span> classifier better? A pretrained image encoder fused with text written before the <span class="nowrap">X-ray</span>, across twelve <span class="nowrap">MIMIC-CXR</span> findings.</p>
+            <svg class="door__arrow" viewBox="0 0 44 16" width="44" height="16" aria-hidden="true" focusable="false"><path d="M0 8h42M35 1l7 7-7 7"/></svg>
+          </div>
+        </li>
 
-          <li class="work-item" data-reveal data-vt-item>
-            <span class="work-item__n vt-num" aria-hidden="true" data-vt="num-drawing">05</span>
+        <li class="door scheme-paper" data-vt-item>
+          <div class="wrap door__row" data-reveal>
+            <span class="door__n vt-num" aria-hidden="true" data-vt="num-drawing">05</span>
             <h3 data-vt="title-drawing"><a href="work/drawing.html">Drawing and painting</a></h3>
-            <p class="work-item__text">Figures in graphite and oil. I learned to express myself creatively through art at a young age from my uncle.</p>
-            <p class="work-item__tag">Practice</p>
-          </li>
+            <p class="door__tag">Practice</p>
+            <p class="door__text">Figures in graphite and oil. I learned to express myself creatively through art at a young age from my uncle.</p>
+            <svg class="door__arrow" viewBox="0 0 44 16" width="44" height="16" aria-hidden="true" focusable="false"><path d="M0 8h42M35 1l7 7-7 7"/></svg>
+          </div>
+        </li>
 
-        </ol>
-      </div>
+      </ol>
     </section>
 
     <!-- ===== Plate 4 · art, writing, contact ===== -->
