@@ -97,6 +97,8 @@ Classes and attributes you will meet most often:
 | `p-results`, `p-result`, `p-history`, `p-limits` | The chest X-ray page’s bands below the main text: one result per row, text and chart trading sides (`p-result--flip`), then From v1 to v2, with its changes three across and two short columns side by side |
 | `p-chart`, `hc__…`, `p-changes` | The chest X-ray page’s result charts (rows of HTML, written by `incoming/scripts/cxr_figures.py` from the project’s aggregate results) and its “From v1 to v2” list |
 | `lyr--v2`, `v2-…` | The chest X-ray page’s v2 plate: the same made-up chest as v1’s, drawn by `incoming/scripts/v2_layer.py` |
+| `p-more`, `p-more__…` | Sections that open on a click (`<details>`), at the foot of the chest X-ray page: the v3 test, what changed in v2, and the v2 and v1 plates. Each row is its title (an `h3` inside the `summary`), a one-line hint (`small`) and a plus |
+| `p-findings`, `p-stats` | GFM-Interp’s result, after the two columns: the claim, three numbers with a sentence each, then the figure they come from |
 | `p-layer`, `lyr`, `bars` | The chest X-ray page’s anomaly-detection plate: its four-panel drawing (Fig. 2, made by `incoming/scripts/anomaly_layer.py`) and its bar list (Fig. 3, where each row’s `--v` is the bar’s length as a share of the longest) |
 | `voice` | The italic sentences in your own voice; use it sparingly |
 | `nowrap` | Keeps a word such as “X-ray” or “MIMIC-CXR” from breaking at its hyphen |

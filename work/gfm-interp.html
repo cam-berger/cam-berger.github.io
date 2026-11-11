@@ -54,10 +54,100 @@
         <dl class="p-meta" data-reveal>
           <div><dt class="label">Years</dt><dd>2026 · Summer AI Safety Research Cohort</dd></div>
           <div><dt class="label">My role</dt><dd>Lead author, researcher, and engineer</dd></div>
-          <!-- repo, paper and figures links stay todos until they are public; the
-               submission is anonymous, so don't link the anonymized review package -->
-          <div><dt class="label">Links</dt><dd><span class="todo">repo</span> · <span class="todo">[workshop paper]</span> · <span class="todo">figures</span></dd></div>
+          <!-- no links here until the repo, paper and figures are public; the
+               submission is anonymous, so never link the anonymized review package -->
+          <div><dt class="label">Publication</dt><dd data-todo="link the repo, the camera-ready paper and the figures once they are public">XAI4Science workshop, NeurIPS 2026, to appear. Paper and code on release.</dd></div>
         </dl>
+
+        <div class="p-columns">
+
+          <!-- ===== Main text ===== -->
+          <article class="p-main">
+            <section aria-labelledby="problem" data-reveal>
+              <h2 class="label" id="problem">The problem</h2>
+              <p>Scientific foundation models make accurate predictions, but there is limited research on how they learn complex genomic signals. When a genome model finds a splice site, is it using biology, or simply sequence statistics? The answer decides whether we can trust it on sequences it has never seen.</p>
+            </section>
+
+            <section aria-labelledby="built" data-reveal>
+              <h2 class="label" id="built">What I built</h2>
+              <p>A measurement and a toolkit. I defined a measurement for the model’s splice-site decision, then adapted interpretability methods built for language models to a genome model, dissecting the nodes and edges that carry the decision.</p>
+            </section>
+
+            <section aria-labelledby="how" data-reveal>
+              <h2 class="label" id="how">How it works</h2>
+              <ol class="steps" role="list">
+                <li class="step">
+                  <span class="step__n" aria-hidden="true">1</span>
+                  <h3>Measure</h3>
+                  <p>Define a logit-difference measurement for the model’s splice-site decision.</p>
+                </li>
+                <li class="step">
+                  <span class="step__n" aria-hidden="true">2</span>
+                  <h3>Attribute</h3>
+                  <p>Rank the attention heads and paths that carry it, and decompose them with QK/OV analysis.</p>
+                </li>
+                <li class="step">
+                  <span class="step__n" aria-hidden="true">3</span>
+                  <h3>Decompose</h3>
+                  <p>Fourier-decompose the positional signal, which exposes a period-three component.</p>
+                </li>
+              </ol>
+            </section>
+          </article>
+
+          <!-- ===== Aside ===== -->
+          <aside class="p-aside" aria-label="About this project">
+            <section class="p-panel" data-reveal>
+              <h2>Why it matters</h2>
+              <p>A genomic sequence is a modality with no words in it. This work is an instrument for looking inside how a model learns and, thus, into how transformers represent structure.</p>
+            </section>
+
+            <section data-reveal>
+              <h2 class="label">Tools</h2>
+              <p>Python, PyTorch, Hugging Face Transformers, NumPy, SciPy, scikit-learn, pyfaidx, Matplotlib. Model: SpliceBERT.1024nt. Data: GENCODE v50 on GRCh38. Compute: Google Colab.</p>
+            </section>
+
+            <section data-reveal>
+              <h2 class="label">Disclosure</h2>
+              <p>Public. Code and figures open.</p>
+            </section>
+
+            <section data-reveal>
+              <h2 class="label">Related</h2>
+              <ul role="list">
+                <li><a href="ai-firmware.html">AI-Firmware</a></li>
+                <li><a href="cipher.html">CIPHER</a></li>
+                <li><a href="chest-xray.html">Multimodal chest <span class="nowrap">X-ray</span></a></li>
+              </ul>
+            </section>
+          </aside>
+
+        </div>
+
+        <!-- ===== Result: the claim, three numbers, then the figure they come from =====
+             The numbers are the page's own, from the paper: keep them in step
+             with Fig. 1 (incoming/scripts/gfm_figure.py). -->
+        <section class="p-findings" aria-labelledby="result">
+          <h2 class="label" id="result" data-reveal>Result</h2>
+          <p class="pull" data-reveal>The model reconstructs splice sites from boundary content and a learned three-nucleotide positional wave, with no splice-specific training.</p>
+
+          <ul class="p-stats" role="list">
+            <li data-reveal>
+              <p class="p-result__stat">0.872</p>
+              <p>logit units: how far corrupting the paired acceptor moves the masked-donor margin, on 400 sealed test sequences (95% CI 0.771–0.969). Matched controls give 0.007 and 0.005.</p>
+            </li>
+            <li data-reveal>
+              <p class="p-result__stat">81.6%</p>
+              <p>of that coupling is removed by ablating the two heads the scan found, L3H1 and L2H15. That is more than any of 400 random head pairs.</p>
+            </li>
+            <li data-reveal>
+              <p class="p-result__stat">64 of 103</p>
+              <p>measured nodes are needed for 90% faithfulness. The core is real but not self-sufficient.</p>
+            </li>
+          </ul>
+
+          <p class="p-findings__more" data-reveal>Nested activation-patching interventions assign four causal roles: coding sequence positional geometry supplies an address, early heads and MLPs build an acceptor-side payload, L3H1 writes it to the donor, and later heads deliver it. Deleting the learned <span class="nowrap">period-3</span> component cuts coupling from 0.946 to 0.026 logit units.</p>
+        </section>
 
         <!-- ===== Figure ===== -->
         <figure class="p-figure p-figure--gfm" data-reveal>
@@ -124,81 +214,10 @@
           <figcaption>Fig. 1 · The model reconstructs splice sites from boundary content and a learned three-nucleotide positional wave.</figcaption>
         </figure>
 
-        <div class="p-columns">
-
-          <!-- ===== Main text ===== -->
-          <article class="p-main">
-            <section aria-labelledby="problem" data-reveal>
-              <h2 class="label" id="problem">The problem</h2>
-              <p>Scientific foundation models make accurate predictions, but there is limited research on how they learn complex genomic signals. When a genome model finds a splice site, is it using biology, or simply sequence statistics? The answer decides whether we can trust it on sequences it has never seen.</p>
-            </section>
-
-            <section aria-labelledby="built" data-reveal>
-              <h2 class="label" id="built">What I built</h2>
-              <p>A measurement and a toolkit. I defined a measurement for the model’s splice-site decision, then adapted interpretability methods built for language models to a genome model, dissecting the nodes and edges that carry the decision.</p>
-            </section>
-
-            <section aria-labelledby="how" data-reveal>
-              <h2 class="label" id="how">How it works</h2>
-              <ol class="steps" role="list">
-                <li class="step">
-                  <span class="step__n" aria-hidden="true">1</span>
-                  <h3>Measure</h3>
-                  <p>Define a logit-difference measurement for the model’s splice-site decision.</p>
-                </li>
-                <li class="step">
-                  <span class="step__n" aria-hidden="true">2</span>
-                  <h3>Attribute</h3>
-                  <p>Rank the attention heads and paths that carry it, and decompose them with QK/OV analysis.</p>
-                </li>
-                <li class="step">
-                  <span class="step__n" aria-hidden="true">3</span>
-                  <h3>Decompose</h3>
-                  <p>Fourier-decompose the positional signal, which exposes a period-three component.</p>
-                </li>
-              </ol>
-            </section>
-
-            <section aria-labelledby="result" data-reveal>
-              <h2 class="label" id="result">Result</h2>
-              <p class="pull">The model reconstructs splice sites from boundary content and a learned three-nucleotide positional wave, with no splice-specific training.</p>
-              <p>On 400 sealed test sequences, corrupting the paired acceptor changes the masked-donor margin by 0.872 logit units (95% CI 0.771–0.969); matched controls give 0.007 and 0.005. Ablating the two heads the scan found, L3H1 and L2H15, removes 81.6% of that coupling, more than any of 400 random head pairs. Nested activation-patching interventions assign four causal roles: coding sequence positional geometry supplies an address, early heads and MLPs build an acceptor-side payload, L3H1 writes it to the donor, and later heads deliver it. Deleting the learned period-3 component cuts coupling from 0.946 to 0.026 logit units. The core is real but not self-sufficient: 90% faithfulness takes 64 of the 103 measured nodes.</p>
-            </section>
-
-            <section aria-labelledby="next" data-reveal>
-              <h2 class="label" id="next">What broke, what’s next</h2>
-              <p>Some of what the model learned is not robust. Simple perturbations remove its confidence, and some well-known biology is only weakly encoded in training. That looks like shortcut learning rather than a robust representation, and it suggests that a better representation of genomic training data and architectures would be more robust. The period-three component is where I would start building that representation theory.</p>
-            </section>
-          </article>
-
-          <!-- ===== Aside ===== -->
-          <aside class="p-aside" aria-label="About this project">
-            <section class="p-panel" data-reveal>
-              <h2>Why it matters</h2>
-              <p>A genomic sequence is a modality with no words in it. This work is an instrument for looking inside how a model learns and, thus, into how transformers represent structure.</p>
-            </section>
-
-            <section data-reveal>
-              <h2 class="label">Tools</h2>
-              <p>Python, PyTorch, Hugging Face Transformers, NumPy, SciPy, scikit-learn, pyfaidx, Matplotlib. Model: SpliceBERT.1024nt. Data: GENCODE v50 on GRCh38. Compute: Google Colab.</p>
-            </section>
-
-            <section data-reveal>
-              <h2 class="label">Disclosure</h2>
-              <p>Public. Code and figures open.</p>
-            </section>
-
-            <section data-reveal>
-              <h2 class="label">Related</h2>
-              <ul role="list">
-                <li><a href="ai-firmware.html">AI-Firmware</a></li>
-                <li><a href="cipher.html">CIPHER</a></li>
-                <li><a href="chest-xray.html">Multimodal chest <span class="nowrap">X-ray</span></a></li>
-              </ul>
-            </section>
-          </aside>
-
-        </div>
+        <section class="p-findings p-findings--next" aria-labelledby="next" data-reveal>
+          <h2 class="label" id="next">What broke, what’s next</h2>
+          <p>Some of what the model learned is not robust. Simple perturbations remove its confidence, and some well-known biology is only weakly encoded in training. That looks like shortcut learning rather than a robust representation, and it suggests that a better representation of genomic training data and architectures would be more robust. The period-three component is where I would start building that representation theory.</p>
+        </section>
 
         <!-- gfm figure 2: start -->
         <figure class="p-figure p-figure--gfm p-figure--after" data-reveal>

@@ -289,35 +289,7 @@
           </div>
         </div>
 
-        <div class="p-result p-result--flip" role="group" aria-labelledby="r-v3">
-          <div class="p-result__text" data-reveal>
-            <h3 class="label" id="r-v3">v3 · A bigger model</h3>
-            <p class="p-result__stat">0 of 3</p>
-            <p class="p-result__note">jobs where TypeSafe’s Jev beat v2’s simple tools</p>
-            <p>For v3 I tested whether a large hosted model could do better. Jev took three jobs: final classifier, report labeler and source of training labels. It lost or tied every time. Its one big win, on Stanford’s test set, came from how two findings are labeled there, and a one-line rule gets most of it back.</p>
-          </div>
-          <div class="p-result__chart">
-            <!-- cxr chart: jev: start -->
-              <figure class="p-chart" data-reveal>
-                <div class="p-chart__panel">
-                  <p class="p-chart__sub">Jev minus v2’s simpler tool for each job, macro AUROC with 95% intervals.</p>
-                  <div class="hc" role="img" aria-label="Jev minus v2&#x27;s simpler tool, in macro AUROC: as the final classifier −0.024, as a report labeler −0.026, as training labels +0.005 on the CheXpert test set and +0.001 on the MIMIC radiologist&#x27;s studies, both within noise."><div class="hc__row"><span class="hc__label">As the final classifier<i>against a logistic regression with the same inputs</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--text" style="left:32.50%;width:30.00%"></span><span class="hc__ci hc--pub" style="left:21.25%;width:21.25%"></span></span><span class="hc__val">−0.024</span></div><div class="hc__row"><span class="hc__label">As a report labeler<i>against the CheXpert labeler, judged by a radiologist</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--text" style="left:30.00%;width:32.50%"></span><span class="hc__ci hc--pub" style="left:11.25%;width:38.75%"></span></span><span class="hc__val">−0.026</span></div><div class="hc__row"><span class="hc__label">As training labels, Stanford<i>against CheXpert labels with the one-line rule</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--pub" style="left:62.50%;width:6.25%"></span><span class="hc__ci hc--pub" style="left:62.50%;width:12.50%"></span></span><span class="hc__val">+0.005</span></div><div class="hc__row"><span class="hc__label">As training labels, MIMIC<i>against CheXpert labels, judged by a radiologist</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--pub" style="left:62.50%;width:1.25%"></span><span class="hc__ci hc--pub" style="left:43.75%;width:41.25%"></span></span><span class="hc__val">+0.001</span></div><div class="hc__row hc__row--axis"><span></span><span class="hc__track hc__track--axis"><span class="hc__tick" style="left:12.50%">−0.04</span><span class="hc__tick" style="left:37.50%">−0.02</span><span class="hc__tick" style="left:62.50%">0</span><span class="hc__tick" style="left:87.50%">+0.02</span></span><span></span></div></div>
-                  <ul class="p-chart__legend" role="list"><li><span class="hc__swatch hc--text" aria-hidden="true"></span>Jev worse, interval below zero</li><li><span class="hc__swatch hc--pub" aria-hidden="true"></span>no clear difference</li></ul>
-                </div>
-                <figcaption>Fig. 7 · v3’s three jobs for TypeSafe’s Jev. For training labels the first seed is shown; the second matches.</figcaption>
-              </figure>
-            <!-- cxr chart: jev: end -->
-          </div>
-        </div>
 
-        <h3 class="label p-history__sub" data-reveal>What changed in v2</h3>
-        <dl class="p-changes" data-reveal>
-          <div><dt>Measurement</dt><dd>v1 picked its best epoch on its own test set. v2 scores each test set once.</dd></div>
-          <div><dt>Images</dt><dd>31% of v1’s images were side views. v2 uses one frontal image per study.</dd></div>
-          <div><dt>Studies</dt><dd>A time-parsing bug dropped most morning studies. v2 uses all 218,000 frontal ones.</dd></div>
-          <div><dt>Text</dt><dd>v1’s text held data from after the <span class="nowrap">X-ray</span>. v2 uses only what came before.</dd></div>
-          <div><dt>Fusion</dt><dd>v1’s cross-attention was really just a linear layer. v2 simply adds the text at the end.</dd></div>
-        </dl>
 
         <div class="p-limits" data-reveal>
           <div>
@@ -332,18 +304,76 @@
       </div>
     </section>
 
-    <!-- ===== v2 · How it reads an X-ray: a plate to match v1's =====
-         The same made-up chest as v1's plate, read the way v2 reads it. A
-         drawing, never a patient; the note is made up and the scores are
-         illustrative. The four panels are generated by
-         incoming/scripts/v2_layer.py, between the "v2 panels" markers. -->
-    <section class="p-layer" aria-labelledby="v2-reads">
+    <!-- ===== More detail: four sections that open on a click =====
+         The v3 test, what changed in v2, and the two "how it works" plates:
+         v2's and v1's, each drawn on the same made-up chest, never a patient
+         (v2's note and scores are made up; Fig. 10's numbers are averages over
+         the validation split, from the project repo). They are <details>,
+         closed until asked for, so the page proper ends at Limits and What's
+         next. The charts and panels inside are still generated between their
+         markers: cxr_figures.py (jev), v2_layer.py ("v2 panels") and
+         anomaly_layer.py ("panels"). -->
+    <section class="p-more" aria-labelledby="more-title">
       <div class="wrap">
-        <h2 class="label" id="v2-reads" data-reveal>v2 · How it reads an <span class="nowrap">X-ray</span></h2>
-        <p class="p-layer__lede" data-reveal>Each of the twelve findings learns which patches of the image to focus on, and the text written before the <span class="nowrap">X-ray</span> nudges the score.</p>
+        <h2 class="label" id="more-title" data-reveal>More detail</h2>
 
-        <figure class="p-figure">
-          <!-- v2 panels: start -->
+        <details class="p-more__item" data-reveal>
+          <summary>
+            <h3 id="r-v3">v3 · A bigger model</h3>
+            <small>A large hosted model took three jobs. It lost or tied every time.</small>
+            <svg class="p-more__icon" viewBox="0 0 22 22" width="22" height="22" aria-hidden="true" focusable="false"><path d="M11 2v18M2 11h18"/></svg>
+          </summary>
+          <div class="p-more__body">
+            <div class="p-result p-result--flip" role="group" aria-labelledby="r-v3">
+              <div class="p-result__text" data-reveal>
+                <p class="p-result__stat">0 of 3</p>
+                <p class="p-result__note">jobs where TypeSafe’s Jev beat v2’s simple tools</p>
+                <p>For v3 I tested whether a large hosted model could do better. Jev took three jobs: final classifier, report labeler and source of training labels. It lost or tied every time. Its one big win, on Stanford’s test set, came from how two findings are labeled there, and a one-line rule gets most of it back.</p>
+              </div>
+              <div class="p-result__chart">
+                <!-- cxr chart: jev: start -->
+              <figure class="p-chart" data-reveal>
+                <div class="p-chart__panel">
+                  <p class="p-chart__sub">Jev minus v2’s simpler tool for each job, macro AUROC with 95% intervals.</p>
+                  <div class="hc" role="img" aria-label="Jev minus v2&#x27;s simpler tool, in macro AUROC: as the final classifier −0.024, as a report labeler −0.026, as training labels +0.005 on the CheXpert test set and +0.001 on the MIMIC radiologist&#x27;s studies, both within noise."><div class="hc__row"><span class="hc__label">As the final classifier<i>against a logistic regression with the same inputs</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--text" style="left:32.50%;width:30.00%"></span><span class="hc__ci hc--pub" style="left:21.25%;width:21.25%"></span></span><span class="hc__val">−0.024</span></div><div class="hc__row"><span class="hc__label">As a report labeler<i>against the CheXpert labeler, judged by a radiologist</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--text" style="left:30.00%;width:32.50%"></span><span class="hc__ci hc--pub" style="left:11.25%;width:38.75%"></span></span><span class="hc__val">−0.026</span></div><div class="hc__row"><span class="hc__label">As training labels, Stanford<i>against CheXpert labels with the one-line rule</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--pub" style="left:62.50%;width:6.25%"></span><span class="hc__ci hc--pub" style="left:62.50%;width:12.50%"></span></span><span class="hc__val">+0.005</span></div><div class="hc__row"><span class="hc__label">As training labels, MIMIC<i>against CheXpert labels, judged by a radiologist</i></span><span class="hc__track"><span class="hc__grid" style="left:12.50%"></span><span class="hc__grid" style="left:37.50%"></span><span class="hc__grid" style="left:62.50%"></span><span class="hc__grid" style="left:87.50%"></span><span class="hc__zero" style="left:62.50%"></span><span class="hc__bar hc--pub" style="left:62.50%;width:1.25%"></span><span class="hc__ci hc--pub" style="left:43.75%;width:41.25%"></span></span><span class="hc__val">+0.001</span></div><div class="hc__row hc__row--axis"><span></span><span class="hc__track hc__track--axis"><span class="hc__tick" style="left:12.50%">−0.04</span><span class="hc__tick" style="left:37.50%">−0.02</span><span class="hc__tick" style="left:62.50%">0</span><span class="hc__tick" style="left:87.50%">+0.02</span></span><span></span></div></div>
+                  <ul class="p-chart__legend" role="list"><li><span class="hc__swatch hc--text" aria-hidden="true"></span>Jev worse, interval below zero</li><li><span class="hc__swatch hc--pub" aria-hidden="true"></span>no clear difference</li></ul>
+                </div>
+                <figcaption>Fig. 7 · v3’s three jobs for TypeSafe’s Jev. For training labels the first seed is shown; the second matches.</figcaption>
+              </figure>
+                <!-- cxr chart: jev: end -->
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="p-more__item" data-reveal>
+          <summary>
+            <h3 id="changed">What changed in v2</h3>
+            <small>Five fixes, from how it is measured to how the text joins the image.</small>
+            <svg class="p-more__icon" viewBox="0 0 22 22" width="22" height="22" aria-hidden="true" focusable="false"><path d="M11 2v18M2 11h18"/></svg>
+          </summary>
+          <div class="p-more__body">
+            <dl class="p-changes" data-reveal>
+              <div><dt>Measurement</dt><dd>v1 picked its best epoch on its own test set. v2 scores each test set once.</dd></div>
+              <div><dt>Images</dt><dd>31% of v1’s images were side views. v2 uses one frontal image per study.</dd></div>
+              <div><dt>Studies</dt><dd>A time-parsing bug dropped most morning studies. v2 uses all 218,000 frontal ones.</dd></div>
+              <div><dt>Text</dt><dd>v1’s text held data from after the <span class="nowrap">X-ray</span>. v2 uses only what came before.</dd></div>
+              <div><dt>Fusion</dt><dd>v1’s cross-attention was really just a linear layer. v2 simply adds the text at the end.</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="p-more__item" data-reveal>
+          <summary>
+            <h3 id="v2-reads">v2 · How it reads an <span class="nowrap">X-ray</span></h3>
+            <small>Four drawings of one made-up chest, read the way v2 reads it.</small>
+            <svg class="p-more__icon" viewBox="0 0 22 22" width="22" height="22" aria-hidden="true" focusable="false"><path d="M11 2v18M2 11h18"/></svg>
+          </summary>
+          <div class="p-more__body p-layer">
+            <p class="p-layer__lede" data-reveal>Each of the twelve findings learns which patches of the image to focus on, and the text written before the <span class="nowrap">X-ray</span> nudges the score.</p>
+
+            <figure class="p-figure">
+              <!-- v2 panels: start -->
           <ol class="lyr lyr--v2" role="list">
             <li class="lyr__step" data-reveal>
               <svg class="lyr__svg" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><path fill="#1B2631" d="M0.5 0.5h9v9h-9zM10.5 0.5h9v9h-9zM20.5 0.5h9v9h-9zM30.5 0.5h9v9h-9zM40.5 0.5h9v9h-9zM50.5 0.5h9v9h-9zM60.5 0.5h9v9h-9zM90.5 0.5h9v9h-9zM100.5 0.5h9v9h-9zM110.5 0.5h9v9h-9zM120.5 0.5h9v9h-9zM130.5 0.5h9v9h-9zM140.5 0.5h9v9h-9zM150.5 0.5h9v9h-9zM0.5 10.5h9v9h-9zM10.5 10.5h9v9h-9zM20.5 10.5h9v9h-9zM30.5 10.5h9v9h-9zM120.5 10.5h9v9h-9zM130.5 10.5h9v9h-9zM140.5 10.5h9v9h-9zM150.5 10.5h9v9h-9zM0.5 20.5h9v9h-9zM10.5 20.5h9v9h-9zM20.5 20.5h9v9h-9zM130.5 20.5h9v9h-9zM140.5 20.5h9v9h-9zM150.5 20.5h9v9h-9zM0.5 30.5h9v9h-9zM10.5 30.5h9v9h-9zM140.5 30.5h9v9h-9zM150.5 30.5h9v9h-9zM0.5 40.5h9v9h-9zM10.5 40.5h9v9h-9zM140.5 40.5h9v9h-9zM150.5 40.5h9v9h-9zM0.5 50.5h9v9h-9zM150.5 50.5h9v9h-9zM0.5 60.5h9v9h-9zM150.5 60.5h9v9h-9zM0.5 70.5h9v9h-9zM150.5 70.5h9v9h-9zM0.5 80.5h9v9h-9zM150.5 80.5h9v9h-9zM0.5 110.5h9v9h-9zM150.5 110.5h9v9h-9zM0.5 120.5h9v9h-9zM150.5 120.5h9v9h-9zM0.5 130.5h9v9h-9zM150.5 130.5h9v9h-9zM0.5 140.5h9v9h-9zM150.5 140.5h9v9h-9zM0.5 150.5h9v9h-9zM10.5 150.5h9v9h-9zM140.5 150.5h9v9h-9zM150.5 150.5h9v9h-9z"/><path fill="#34475A" d="M40.5 30.5h9v9h-9zM50.5 30.5h9v9h-9zM100.5 30.5h9v9h-9zM110.5 30.5h9v9h-9zM30.5 40.5h9v9h-9zM40.5 40.5h9v9h-9zM50.5 40.5h9v9h-9zM60.5 40.5h9v9h-9zM90.5 40.5h9v9h-9zM100.5 40.5h9v9h-9zM110.5 40.5h9v9h-9zM120.5 40.5h9v9h-9zM30.5 50.5h9v9h-9zM40.5 50.5h9v9h-9zM50.5 50.5h9v9h-9zM60.5 50.5h9v9h-9zM90.5 50.5h9v9h-9zM100.5 50.5h9v9h-9zM110.5 50.5h9v9h-9zM120.5 50.5h9v9h-9zM30.5 60.5h9v9h-9zM40.5 60.5h9v9h-9zM50.5 60.5h9v9h-9zM60.5 60.5h9v9h-9zM90.5 60.5h9v9h-9zM100.5 60.5h9v9h-9zM110.5 60.5h9v9h-9zM120.5 60.5h9v9h-9zM20.5 70.5h9v9h-9zM30.5 70.5h9v9h-9zM40.5 70.5h9v9h-9zM50.5 70.5h9v9h-9zM60.5 70.5h9v9h-9zM90.5 70.5h9v9h-9zM100.5 70.5h9v9h-9zM110.5 70.5h9v9h-9zM120.5 70.5h9v9h-9zM130.5 70.5h9v9h-9zM20.5 80.5h9v9h-9zM30.5 80.5h9v9h-9zM40.5 80.5h9v9h-9zM50.5 80.5h9v9h-9zM60.5 80.5h9v9h-9zM90.5 80.5h9v9h-9zM100.5 80.5h9v9h-9zM110.5 80.5h9v9h-9zM120.5 80.5h9v9h-9zM130.5 80.5h9v9h-9zM30.5 90.5h9v9h-9zM40.5 90.5h9v9h-9zM50.5 90.5h9v9h-9zM60.5 90.5h9v9h-9zM110.5 90.5h9v9h-9zM120.5 90.5h9v9h-9zM60.5 100.5h9v9h-9zM110.5 100.5h9v9h-9zM120.5 100.5h9v9h-9zM60.5 110.5h9v9h-9zM110.5 110.5h9v9h-9zM120.5 110.5h9v9h-9zM50.5 120.5h9v9h-9zM100.5 120.5h9v9h-9zM110.5 120.5h9v9h-9z"/><path fill="#586D80" d="M20.5 30.5h9v9h-9zM30.5 30.5h9v9h-9zM60.5 30.5h9v9h-9zM90.5 30.5h9v9h-9zM120.5 30.5h9v9h-9zM130.5 30.5h9v9h-9zM20.5 40.5h9v9h-9zM130.5 40.5h9v9h-9zM10.5 50.5h9v9h-9zM20.5 50.5h9v9h-9zM130.5 50.5h9v9h-9zM140.5 50.5h9v9h-9zM10.5 60.5h9v9h-9zM20.5 60.5h9v9h-9zM130.5 60.5h9v9h-9zM140.5 60.5h9v9h-9zM10.5 70.5h9v9h-9zM140.5 70.5h9v9h-9zM10.5 80.5h9v9h-9zM140.5 80.5h9v9h-9zM0.5 90.5h9v9h-9zM10.5 90.5h9v9h-9zM20.5 90.5h9v9h-9zM130.5 90.5h9v9h-9zM140.5 90.5h9v9h-9zM150.5 90.5h9v9h-9zM0.5 100.5h9v9h-9zM10.5 100.5h9v9h-9zM20.5 100.5h9v9h-9zM130.5 100.5h9v9h-9zM140.5 100.5h9v9h-9zM150.5 100.5h9v9h-9zM10.5 110.5h9v9h-9zM20.5 110.5h9v9h-9zM130.5 110.5h9v9h-9zM140.5 110.5h9v9h-9zM10.5 120.5h9v9h-9zM20.5 120.5h9v9h-9zM30.5 120.5h9v9h-9zM40.5 120.5h9v9h-9zM60.5 120.5h9v9h-9zM120.5 120.5h9v9h-9zM130.5 120.5h9v9h-9zM140.5 120.5h9v9h-9z"/><path fill="#7F94A8" d="M40.5 10.5h9v9h-9zM50.5 10.5h9v9h-9zM60.5 10.5h9v9h-9zM90.5 10.5h9v9h-9zM100.5 10.5h9v9h-9zM110.5 10.5h9v9h-9zM30.5 20.5h9v9h-9zM40.5 20.5h9v9h-9zM50.5 20.5h9v9h-9zM60.5 20.5h9v9h-9zM90.5 20.5h9v9h-9zM100.5 20.5h9v9h-9zM110.5 20.5h9v9h-9zM120.5 20.5h9v9h-9zM90.5 90.5h9v9h-9zM100.5 90.5h9v9h-9zM30.5 100.5h9v9h-9zM50.5 100.5h9v9h-9zM90.5 100.5h9v9h-9zM100.5 100.5h9v9h-9zM30.5 110.5h9v9h-9zM40.5 110.5h9v9h-9zM50.5 110.5h9v9h-9zM90.5 110.5h9v9h-9zM100.5 110.5h9v9h-9zM90.5 120.5h9v9h-9zM10.5 130.5h9v9h-9zM20.5 130.5h9v9h-9zM30.5 130.5h9v9h-9zM40.5 130.5h9v9h-9zM50.5 130.5h9v9h-9zM60.5 130.5h9v9h-9zM70.5 130.5h9v9h-9zM80.5 130.5h9v9h-9zM90.5 130.5h9v9h-9zM100.5 130.5h9v9h-9zM110.5 130.5h9v9h-9zM120.5 130.5h9v9h-9zM130.5 130.5h9v9h-9zM140.5 130.5h9v9h-9zM10.5 140.5h9v9h-9zM20.5 140.5h9v9h-9zM30.5 140.5h9v9h-9zM40.5 140.5h9v9h-9zM50.5 140.5h9v9h-9zM60.5 140.5h9v9h-9zM70.5 140.5h9v9h-9zM80.5 140.5h9v9h-9zM90.5 140.5h9v9h-9zM100.5 140.5h9v9h-9zM110.5 140.5h9v9h-9zM120.5 140.5h9v9h-9zM130.5 140.5h9v9h-9zM140.5 140.5h9v9h-9zM20.5 150.5h9v9h-9zM30.5 150.5h9v9h-9zM40.5 150.5h9v9h-9zM50.5 150.5h9v9h-9zM60.5 150.5h9v9h-9zM70.5 150.5h9v9h-9zM80.5 150.5h9v9h-9zM90.5 150.5h9v9h-9zM100.5 150.5h9v9h-9zM110.5 150.5h9v9h-9zM120.5 150.5h9v9h-9zM130.5 150.5h9v9h-9z"/><path fill="#A9BDCE" d="M70.5 0.5h9v9h-9zM80.5 0.5h9v9h-9zM70.5 10.5h9v9h-9zM80.5 10.5h9v9h-9zM70.5 20.5h9v9h-9zM80.5 20.5h9v9h-9zM70.5 30.5h9v9h-9zM80.5 30.5h9v9h-9zM70.5 40.5h9v9h-9zM80.5 40.5h9v9h-9zM70.5 50.5h9v9h-9zM80.5 50.5h9v9h-9zM70.5 60.5h9v9h-9zM80.5 60.5h9v9h-9zM70.5 70.5h9v9h-9zM80.5 70.5h9v9h-9zM70.5 80.5h9v9h-9zM80.5 80.5h9v9h-9zM70.5 90.5h9v9h-9zM80.5 90.5h9v9h-9zM40.5 100.5h9v9h-9zM70.5 100.5h9v9h-9zM80.5 100.5h9v9h-9zM70.5 110.5h9v9h-9zM80.5 110.5h9v9h-9zM70.5 120.5h9v9h-9zM80.5 120.5h9v9h-9z"/></svg>
@@ -362,36 +392,34 @@
               <p><span class="n" aria-hidden="true">4</span>Twelve scores, nudged by the note</p>
             </li>
           </ol>
-          <!-- v2 panels: end -->
-          <figcaption data-reveal>Fig. 8 · Drawn on the same made-up chest as v1’s below. The note and the scores are made up.</figcaption>
-        </figure>
+              <!-- v2 panels: end -->
+              <figcaption data-reveal>Fig. 8 · Drawn on the same made-up chest as v1’s below. The note and the scores are made up.</figcaption>
+            </figure>
 
-        <div class="p-limits">
-          <section aria-labelledby="v2-parts" data-reveal>
-            <h3 class="label" id="v2-parts">What each part does</h3>
-            <p>Pretraining on chest <span class="nowrap">X-rays</span>: +0.060. Letting each finding pick its patches: +0.015. Fine-tuning: +0.010. The text: about +0.02.</p>
-          </section>
-          <section aria-labelledby="v2-unseen" data-reveal>
-            <h3 class="label" id="v2-unseen">What it doesn’t see</h3>
-            <p>Side views, detail finer than 518 pixels, or anything written after the <span class="nowrap">X-ray</span>.</p>
-          </section>
-        </div>
-      </div>
-    </section>
+            <div class="p-limits">
+              <section aria-labelledby="v2-parts" data-reveal>
+                <h4 class="label" id="v2-parts">What each part does</h4>
+                <p>Pretraining on chest <span class="nowrap">X-rays</span>: +0.060. Letting each finding pick its patches: +0.015. Fine-tuning: +0.010. The text: about +0.02.</p>
+              </section>
+              <section aria-labelledby="v2-unseen" data-reveal>
+                <h4 class="label" id="v2-unseen">What it doesn’t see</h4>
+                <p>Side views, detail finer than 518 pixels, or anything written after the <span class="nowrap">X-ray</span>.</p>
+              </section>
+            </div>
+          </div>
+        </details>
 
-    <!-- ===== Anomaly detection: a second plate =====
-         How v1’s masked autoencoder doubles as an anomaly detector. Fig. 9 draws
-         the method on a made-up chest, never a patient; its four panels are
-         generated, between the "panels" markers. Fig. 10's numbers are averages
-         over the validation split, from the project repo (MAE reconstruction
-         analysis, January 2026). -->
-    <section class="p-layer p-layer--alt" aria-labelledby="anomaly">
-      <div class="wrap">
-        <h2 class="label" id="anomaly" data-reveal>v1 · Anomaly detection</h2>
-        <p class="p-layer__lede" data-reveal>Trained only on normal chests, the model rebuilds every <span class="nowrap">X-ray</span> as if it were normal. Where the rebuild fails is where to look.</p>
+        <details class="p-more__item" data-reveal>
+          <summary>
+            <h3 id="anomaly">v1 · Anomaly detection</h3>
+            <small>The first version: rebuild every <span class="nowrap">X-ray</span> as normal, and look where the rebuild fails.</small>
+            <svg class="p-more__icon" viewBox="0 0 22 22" width="22" height="22" aria-hidden="true" focusable="false"><path d="M11 2v18M2 11h18"/></svg>
+          </summary>
+          <div class="p-more__body p-layer">
+            <p class="p-layer__lede" data-reveal>Trained only on normal chests, the model rebuilds every <span class="nowrap">X-ray</span> as if it were normal. Where the rebuild fails is where to look.</p>
 
-        <figure class="p-figure">
-          <!-- panels: start -->
+            <figure class="p-figure">
+              <!-- panels: start -->
           <ol class="lyr" role="list">
             <li class="lyr__step" data-reveal>
               <svg class="lyr__svg" viewBox="0 0 160 160" aria-hidden="true" focusable="false"><path fill="#1B2631" d="M0.5 0.5h9v9h-9zM10.5 0.5h9v9h-9zM20.5 0.5h9v9h-9zM30.5 0.5h9v9h-9zM40.5 0.5h9v9h-9zM50.5 0.5h9v9h-9zM60.5 0.5h9v9h-9zM90.5 0.5h9v9h-9zM100.5 0.5h9v9h-9zM110.5 0.5h9v9h-9zM120.5 0.5h9v9h-9zM130.5 0.5h9v9h-9zM140.5 0.5h9v9h-9zM150.5 0.5h9v9h-9zM0.5 10.5h9v9h-9zM10.5 10.5h9v9h-9zM20.5 10.5h9v9h-9zM30.5 10.5h9v9h-9zM120.5 10.5h9v9h-9zM130.5 10.5h9v9h-9zM140.5 10.5h9v9h-9zM150.5 10.5h9v9h-9zM0.5 20.5h9v9h-9zM10.5 20.5h9v9h-9zM20.5 20.5h9v9h-9zM130.5 20.5h9v9h-9zM140.5 20.5h9v9h-9zM150.5 20.5h9v9h-9zM0.5 30.5h9v9h-9zM10.5 30.5h9v9h-9zM140.5 30.5h9v9h-9zM150.5 30.5h9v9h-9zM0.5 40.5h9v9h-9zM10.5 40.5h9v9h-9zM140.5 40.5h9v9h-9zM150.5 40.5h9v9h-9zM0.5 50.5h9v9h-9zM150.5 50.5h9v9h-9zM0.5 60.5h9v9h-9zM150.5 60.5h9v9h-9zM0.5 70.5h9v9h-9zM150.5 70.5h9v9h-9zM0.5 80.5h9v9h-9zM150.5 80.5h9v9h-9zM0.5 110.5h9v9h-9zM150.5 110.5h9v9h-9zM0.5 120.5h9v9h-9zM150.5 120.5h9v9h-9zM0.5 130.5h9v9h-9zM150.5 130.5h9v9h-9zM0.5 140.5h9v9h-9zM150.5 140.5h9v9h-9zM0.5 150.5h9v9h-9zM10.5 150.5h9v9h-9zM140.5 150.5h9v9h-9zM150.5 150.5h9v9h-9z"/><path fill="#34475A" d="M40.5 30.5h9v9h-9zM50.5 30.5h9v9h-9zM100.5 30.5h9v9h-9zM110.5 30.5h9v9h-9zM30.5 40.5h9v9h-9zM40.5 40.5h9v9h-9zM50.5 40.5h9v9h-9zM60.5 40.5h9v9h-9zM90.5 40.5h9v9h-9zM100.5 40.5h9v9h-9zM110.5 40.5h9v9h-9zM120.5 40.5h9v9h-9zM30.5 50.5h9v9h-9zM40.5 50.5h9v9h-9zM50.5 50.5h9v9h-9zM60.5 50.5h9v9h-9zM90.5 50.5h9v9h-9zM100.5 50.5h9v9h-9zM110.5 50.5h9v9h-9zM120.5 50.5h9v9h-9zM30.5 60.5h9v9h-9zM40.5 60.5h9v9h-9zM50.5 60.5h9v9h-9zM60.5 60.5h9v9h-9zM90.5 60.5h9v9h-9zM100.5 60.5h9v9h-9zM110.5 60.5h9v9h-9zM120.5 60.5h9v9h-9zM20.5 70.5h9v9h-9zM30.5 70.5h9v9h-9zM40.5 70.5h9v9h-9zM50.5 70.5h9v9h-9zM60.5 70.5h9v9h-9zM90.5 70.5h9v9h-9zM100.5 70.5h9v9h-9zM110.5 70.5h9v9h-9zM120.5 70.5h9v9h-9zM130.5 70.5h9v9h-9zM20.5 80.5h9v9h-9zM30.5 80.5h9v9h-9zM40.5 80.5h9v9h-9zM50.5 80.5h9v9h-9zM60.5 80.5h9v9h-9zM90.5 80.5h9v9h-9zM100.5 80.5h9v9h-9zM110.5 80.5h9v9h-9zM120.5 80.5h9v9h-9zM130.5 80.5h9v9h-9zM30.5 90.5h9v9h-9zM40.5 90.5h9v9h-9zM50.5 90.5h9v9h-9zM60.5 90.5h9v9h-9zM110.5 90.5h9v9h-9zM120.5 90.5h9v9h-9zM60.5 100.5h9v9h-9zM110.5 100.5h9v9h-9zM120.5 100.5h9v9h-9zM60.5 110.5h9v9h-9zM110.5 110.5h9v9h-9zM120.5 110.5h9v9h-9zM50.5 120.5h9v9h-9zM100.5 120.5h9v9h-9zM110.5 120.5h9v9h-9z"/><path fill="#586D80" d="M20.5 30.5h9v9h-9zM30.5 30.5h9v9h-9zM60.5 30.5h9v9h-9zM90.5 30.5h9v9h-9zM120.5 30.5h9v9h-9zM130.5 30.5h9v9h-9zM20.5 40.5h9v9h-9zM130.5 40.5h9v9h-9zM10.5 50.5h9v9h-9zM20.5 50.5h9v9h-9zM130.5 50.5h9v9h-9zM140.5 50.5h9v9h-9zM10.5 60.5h9v9h-9zM20.5 60.5h9v9h-9zM130.5 60.5h9v9h-9zM140.5 60.5h9v9h-9zM10.5 70.5h9v9h-9zM140.5 70.5h9v9h-9zM10.5 80.5h9v9h-9zM140.5 80.5h9v9h-9zM0.5 90.5h9v9h-9zM10.5 90.5h9v9h-9zM20.5 90.5h9v9h-9zM130.5 90.5h9v9h-9zM140.5 90.5h9v9h-9zM150.5 90.5h9v9h-9zM0.5 100.5h9v9h-9zM10.5 100.5h9v9h-9zM20.5 100.5h9v9h-9zM130.5 100.5h9v9h-9zM140.5 100.5h9v9h-9zM150.5 100.5h9v9h-9zM10.5 110.5h9v9h-9zM20.5 110.5h9v9h-9zM130.5 110.5h9v9h-9zM140.5 110.5h9v9h-9zM10.5 120.5h9v9h-9zM20.5 120.5h9v9h-9zM30.5 120.5h9v9h-9zM40.5 120.5h9v9h-9zM60.5 120.5h9v9h-9zM120.5 120.5h9v9h-9zM130.5 120.5h9v9h-9zM140.5 120.5h9v9h-9z"/><path fill="#7F94A8" d="M40.5 10.5h9v9h-9zM50.5 10.5h9v9h-9zM60.5 10.5h9v9h-9zM90.5 10.5h9v9h-9zM100.5 10.5h9v9h-9zM110.5 10.5h9v9h-9zM30.5 20.5h9v9h-9zM40.5 20.5h9v9h-9zM50.5 20.5h9v9h-9zM60.5 20.5h9v9h-9zM90.5 20.5h9v9h-9zM100.5 20.5h9v9h-9zM110.5 20.5h9v9h-9zM120.5 20.5h9v9h-9zM90.5 90.5h9v9h-9zM100.5 90.5h9v9h-9zM30.5 100.5h9v9h-9zM50.5 100.5h9v9h-9zM90.5 100.5h9v9h-9zM100.5 100.5h9v9h-9zM30.5 110.5h9v9h-9zM40.5 110.5h9v9h-9zM50.5 110.5h9v9h-9zM90.5 110.5h9v9h-9zM100.5 110.5h9v9h-9zM90.5 120.5h9v9h-9zM10.5 130.5h9v9h-9zM20.5 130.5h9v9h-9zM30.5 130.5h9v9h-9zM40.5 130.5h9v9h-9zM50.5 130.5h9v9h-9zM60.5 130.5h9v9h-9zM70.5 130.5h9v9h-9zM80.5 130.5h9v9h-9zM90.5 130.5h9v9h-9zM100.5 130.5h9v9h-9zM110.5 130.5h9v9h-9zM120.5 130.5h9v9h-9zM130.5 130.5h9v9h-9zM140.5 130.5h9v9h-9zM10.5 140.5h9v9h-9zM20.5 140.5h9v9h-9zM30.5 140.5h9v9h-9zM40.5 140.5h9v9h-9zM50.5 140.5h9v9h-9zM60.5 140.5h9v9h-9zM70.5 140.5h9v9h-9zM80.5 140.5h9v9h-9zM90.5 140.5h9v9h-9zM100.5 140.5h9v9h-9zM110.5 140.5h9v9h-9zM120.5 140.5h9v9h-9zM130.5 140.5h9v9h-9zM140.5 140.5h9v9h-9zM20.5 150.5h9v9h-9zM30.5 150.5h9v9h-9zM40.5 150.5h9v9h-9zM50.5 150.5h9v9h-9zM60.5 150.5h9v9h-9zM70.5 150.5h9v9h-9zM80.5 150.5h9v9h-9zM90.5 150.5h9v9h-9zM100.5 150.5h9v9h-9zM110.5 150.5h9v9h-9zM120.5 150.5h9v9h-9zM130.5 150.5h9v9h-9z"/><path fill="#A9BDCE" d="M70.5 0.5h9v9h-9zM80.5 0.5h9v9h-9zM70.5 10.5h9v9h-9zM80.5 10.5h9v9h-9zM70.5 20.5h9v9h-9zM80.5 20.5h9v9h-9zM70.5 30.5h9v9h-9zM80.5 30.5h9v9h-9zM70.5 40.5h9v9h-9zM80.5 40.5h9v9h-9zM70.5 50.5h9v9h-9zM80.5 50.5h9v9h-9zM70.5 60.5h9v9h-9zM80.5 60.5h9v9h-9zM70.5 70.5h9v9h-9zM80.5 70.5h9v9h-9zM70.5 80.5h9v9h-9zM80.5 80.5h9v9h-9zM70.5 90.5h9v9h-9zM80.5 90.5h9v9h-9zM40.5 100.5h9v9h-9zM70.5 100.5h9v9h-9zM80.5 100.5h9v9h-9zM70.5 110.5h9v9h-9zM80.5 110.5h9v9h-9zM70.5 120.5h9v9h-9zM80.5 120.5h9v9h-9z"/></svg>
@@ -410,42 +438,44 @@
               <p><span class="n" aria-hidden="true">4</span>The error: where to look</p>
             </li>
           </ol>
-          <!-- panels: end -->
-          <figcaption data-reveal>Fig. 9 · Drawn on a made-up chest, since <span class="nowrap">MIMIC-CXR</span> images can’t be shown.</figcaption>
-        </figure>
+              <!-- panels: end -->
+              <figcaption data-reveal>Fig. 9 · Drawn on a made-up chest, since <span class="nowrap">MIMIC-CXR</span> images can’t be shown.</figcaption>
+            </figure>
 
-        <div class="p-columns">
-          <div class="p-main">
-            <section aria-labelledby="anomaly-found" data-reveal>
-              <h3 class="label" id="anomaly-found">What it found</h3>
-              <p>Across 4,922 abnormal studies, it had the most trouble rebuilding pleural changes, collapsed lungs, pneumonia and fractures. Oddly, consolidation was the easiest (Fig. 10).</p>
-            </section>
+            <div class="p-columns">
+              <div class="p-main">
+                <section aria-labelledby="anomaly-found" data-reveal>
+                  <h4 class="label" id="anomaly-found">What it found</h4>
+                  <p>Across 4,922 abnormal studies, it had the most trouble rebuilding pleural changes, collapsed lungs, pneumonia and fractures. Oddly, consolidation was the easiest (Fig. 10).</p>
+                </section>
 
-            <section aria-labelledby="anomaly-open" data-reveal>
-              <h3 class="label" id="anomaly-open">What it didn’t show</h3>
-              <p>These averages only compare sick chests to each other. I never tested whether the error actually separates normal from abnormal. In v2 I dropped anomaly scores, because they can’t tell you which finding is there.</p>
-            </section>
+                <section aria-labelledby="anomaly-open" data-reveal>
+                  <h4 class="label" id="anomaly-open">What it didn’t show</h4>
+                  <p>These averages only compare sick chests to each other. I never tested whether the error actually separates normal from abnormal. In v2 I dropped anomaly scores, because they can’t tell you which finding is there.</p>
+                </section>
+              </div>
+
+              <figure class="p-bars" data-reveal>
+                <ol class="bars" role="list">
+                  <li style="--v: 1; --t: 1; --i: 0"><span>Pleural other</span><span class="bars__val">9.07</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.963; --t: 0.938; --i: 1"><span>Pneumothorax</span><span class="bars__val">8.73</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.956; --t: 0.927; --i: 2"><span>Pneumonia</span><span class="bars__val">8.67</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.953; --t: 0.922; --i: 3"><span>Fracture</span><span class="bars__val">8.64</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.900; --t: 0.835; --i: 4"><span>Lung lesion</span><span class="bars__val">8.16</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.897; --t: 0.831; --i: 5"><span>Edema</span><span class="bars__val">8.14</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.686; --t: 0.483; --i: 6"><span>Atelectasis</span><span class="bars__val">6.22</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.681; --t: 0.475; --i: 7"><span>Pleural effusion</span><span class="bars__val">6.18</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.600; --t: 0.341; --i: 8"><span>Lung opacity</span><span class="bars__val">5.44</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.563; --t: 0.281; --i: 9"><span>Cardiomegaly</span><span class="bars__val">5.11</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.561; --t: 0.277; --i: 10"><span>Enlarged cardiomediastinum</span><span class="bars__val">5.09</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.461; --t: 0.113; --i: 11"><span>Support devices</span><span class="bars__val">4.18</span><span class="bars__bar" aria-hidden="true"></span></li>
+                  <li style="--v: 0.393; --t: 0; --i: 12"><span>Consolidation</span><span class="bars__val">3.56</span><span class="bars__bar" aria-hidden="true"></span></li>
+                </ol>
+                <figcaption>Fig. 10 · Average reconstruction error by finding, mean squared error <span class="nowrap">× 10<sup>−4</sup></span>.</figcaption>
+              </figure>
+            </div>
           </div>
-
-          <figure class="p-bars" data-reveal>
-            <ol class="bars" role="list">
-              <li style="--v: 1; --t: 1; --i: 0"><span>Pleural other</span><span class="bars__val">9.07</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.963; --t: 0.938; --i: 1"><span>Pneumothorax</span><span class="bars__val">8.73</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.956; --t: 0.927; --i: 2"><span>Pneumonia</span><span class="bars__val">8.67</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.953; --t: 0.922; --i: 3"><span>Fracture</span><span class="bars__val">8.64</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.900; --t: 0.835; --i: 4"><span>Lung lesion</span><span class="bars__val">8.16</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.897; --t: 0.831; --i: 5"><span>Edema</span><span class="bars__val">8.14</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.686; --t: 0.483; --i: 6"><span>Atelectasis</span><span class="bars__val">6.22</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.681; --t: 0.475; --i: 7"><span>Pleural effusion</span><span class="bars__val">6.18</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.600; --t: 0.341; --i: 8"><span>Lung opacity</span><span class="bars__val">5.44</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.563; --t: 0.281; --i: 9"><span>Cardiomegaly</span><span class="bars__val">5.11</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.561; --t: 0.277; --i: 10"><span>Enlarged cardiomediastinum</span><span class="bars__val">5.09</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.461; --t: 0.113; --i: 11"><span>Support devices</span><span class="bars__val">4.18</span><span class="bars__bar" aria-hidden="true"></span></li>
-              <li style="--v: 0.393; --t: 0; --i: 12"><span>Consolidation</span><span class="bars__val">3.56</span><span class="bars__bar" aria-hidden="true"></span></li>
-            </ol>
-            <figcaption>Fig. 10 · Average reconstruction error by finding, mean squared error <span class="nowrap">× 10<sup>−4</sup></span>.</figcaption>
-          </figure>
-        </div>
+        </details>
       </div>
     </section>
   </main>

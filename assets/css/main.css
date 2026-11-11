@@ -39,7 +39,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);   /* fast to start, long soft landing */
   --t-quick: 300ms;            /* hovers and focus, the Media Lab's 0.3s */
   --t-lift: 600ms;             /* a work of art leaning off the wall */
-  --t-reveal: 1100ms;          /* things settling in as you scroll */
+  --t-reveal: 700ms;           /* things settling in as you scroll */
 }
 
 @media (max-width: 1023px) { :root { --gutter: 40px; } }
@@ -70,9 +70,9 @@ body {
 }
 
 img { display: block; max-width: 100%; height: auto; }
-h1, h2, h3, p, figure, ol, ul { margin: 0; }
+h1, h2, h3, h4, p, figure, ol, ul { margin: 0; }
 ol, ul { padding: 0; list-style: none; }
-h1, h2, h3 { font-weight: 400; }
+h1, h2, h3, h4 { font-weight: 400; }
 
 a {
   color: inherit;
@@ -156,7 +156,7 @@ section[id] { scroll-margin-top: 24px; }
 .brand { letter-spacing: 0.04em; font-variation-settings: 'opsz' 14, 'wght' 500; }
 
 .nav { display: flex; flex-wrap: wrap; column-gap: 24px; }
-.nav a { color: var(--ink-muted); }
+.nav a { padding-inline: 12px; margin-inline: -12px; color: var(--ink-muted); }   /* "Art" and "CV" get a 44px-wide tap target; the 24px gap is the two paddings */
 .nav a:hover { color: var(--ink); }
 .nav .nav-cv { color: var(--accent); }
 .nav .nav-cv:hover { color: var(--ink); }
@@ -508,7 +508,7 @@ section[id] { scroll-margin-top: 24px; }
 }
 .lost p:not(.label) { font-size: clamp(19px, 1.7vw, 23px); line-height: 1.5; font-variation-settings: 'opsz' 32, 'wght' 350; }
 .lost p + p { margin-top: 12px; }
-.lost a { text-decoration-color: var(--accent); }
+.lost a { display: inline-block; padding-block: 10px; text-decoration-color: var(--accent); }   /* a 44px tap target */
 .lost a:hover { color: var(--accent); }
 
 
@@ -709,7 +709,7 @@ html.page-project {
 .p-panel { padding: 28px 30px 30px; background: var(--s-panel); }
 .p-panel h2:not(.label) { margin-bottom: 12px; font-size: 21px; line-height: 1.25; font-variation-settings: 'opsz' 28, 'wght' 400; }
 .p-panel > div + div { margin-top: 22px; }
-.p-aside ul li a { display: inline-flex; align-items: center; min-height: 44px; color: var(--s-text); }
+.p-aside ul li a { display: inline-block; padding-block: 11px; color: var(--s-text); }   /* a 44px tap target; inline-flex would drop the space before a .nowrap */
 @media (max-width: 1023px) { .p-aside { max-width: 680px; } }
 
 
@@ -846,7 +846,7 @@ html.page-project {
 }
 .p-layer .p-figure { margin-bottom: clamp(64px, 8vw, 104px); }
 .p-layer .p-columns { grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); }
-.p-main h3.label { margin-bottom: 16px; }
+.p-main h3.label, .p-main h4.label { margin-bottom: 16px; }
 @media (max-width: 1023px) { .p-layer .p-columns { grid-template-columns: minmax(0, 1fr); } }
 
 .lyr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 2vw, 28px); }
@@ -904,7 +904,7 @@ html.page-project {
 }
 .hc__row { display: contents; }
 .hc__label { padding-block: 5px; font-size: 13.5px; line-height: 1.25; text-align: right; color: var(--s-text); }
-.hc__label i { display: block; margin-top: 1px; font-size: 11.5px; font-style: normal; color: var(--s-muted); }
+.hc__label i { display: block; margin-top: 1px; font-size: 12px; font-style: normal; color: var(--s-muted); }
 .hc__row--key .hc__label { color: var(--s-label); }
 .hc__track { position: relative; align-self: stretch; min-height: 28px; }
 .hc__grid { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--s-panel-2); }
@@ -920,8 +920,8 @@ html.page-project {
 .hc--text { color: var(--s-accent); }
 .hc--pub { color: var(--s-muted); }
 .hc__row--axis .hc__track { min-height: 20px; }
-.hc__tick { position: absolute; top: 4px; transform: translateX(-50%); font-size: 11.5px; color: var(--s-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.hc__group { grid-column: 1 / -1; margin-top: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--s-label); }
+.hc__tick { position: absolute; top: 4px; transform: translateX(-50%); font-size: 12px; color: var(--s-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hc__group { grid-column: 1 / -1; margin-top: 10px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--s-label); }
 .hc__group:first-child { margin-top: 0; }
 .p-chart__legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px; font-size: 13px; color: var(--s-muted); }
 .hc__swatch { position: relative; display: inline-block; width: 10px; height: 10px; margin-right: 7px; border-radius: 50%; background: currentColor; vertical-align: -1px; }
@@ -994,6 +994,55 @@ html.page-project {
 /* v1's plate sits on the reading colour, between two panel plates */
 .p-layer--alt { background: var(--s-body); }
 
+
+/* ---------- more detail: sections that open on a click ----------
+   A plain list of <details> at the foot of a long page, so its main story
+   can end and the depth is there for whoever wants it. Each row is its
+   title, one line on what is inside, and a plus that turns into a cross.
+   What opens keeps its own layout (a results row, a plate, a list). */
+
+.p-more { padding-block: clamp(80px, 9vw, 136px); background: var(--s-panel); color: var(--s-text); --chart-bg: var(--s-body); }
+.p-more > .wrap > .label { margin-bottom: clamp(28px, 3vw, 40px); }
+.p-more__item { border-top: 1px solid var(--s-panel-2); border-top-color: color-mix(in srgb, var(--s-text) 24%, transparent); }
+.p-more__item:last-of-type { border-bottom: 1px solid var(--s-panel-2); border-bottom-color: color-mix(in srgb, var(--s-text) 24%, transparent); }
+.p-more__item > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "title icon"
+    "hint  icon";
+  column-gap: 32px;
+  row-gap: 8px;
+  align-items: center;
+  padding-block: clamp(22px, 2.4vw, 30px);
+  cursor: pointer;
+  list-style: none;
+}
+.p-more__item > summary::-webkit-details-marker { display: none; }
+.p-more__item h3 {
+  grid-area: title;
+  width: fit-content;
+  font-size: clamp(24px, 2.3vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-decoration: underline 2px transparent;
+  text-underline-offset: 8px;
+  transition: text-decoration-color var(--t-quick) ease;
+  font-variation-settings: 'opsz' 48, 'wght' 380;
+}
+.p-more__item small { grid-area: hint; max-width: 60ch; font-size: 15.5px; line-height: 1.5; color: var(--s-muted); }
+.p-more__icon {
+  grid-area: icon;
+  fill: none;
+  stroke: var(--s-accent);
+  stroke-width: 1.25;
+  transition: transform var(--t-quick) var(--ease);
+}
+.p-more__item > summary:hover h3 { text-decoration-color: var(--s-accent); }
+.p-more__item[open] .p-more__icon { transform: rotate(45deg); }
+.p-more__body { padding-block: clamp(20px, 3vw, 44px) clamp(56px, 7vw, 104px); }
+.p-more__body.p-layer { background: none; }
+
 /* v2's plate: the same made-up chest, read the way v2 reads it */
 .lyr__svg text { font-family: var(--font); }
 .v2-dim { opacity: 0.32; }
@@ -1041,7 +1090,55 @@ html.page-project {
   .gfm { grid-template-columns: minmax(0, 1fr); }
   .gfm > .gfm__panel { grid-column: auto; }
 }
+/* On a phone the charts shrink to the screen and their labels with them. So
+   the figure runs edge to edge, and the smallest labels are set a size up
+   (in the chart's own units), which keeps them near 11px on screen. */
+@media (max-width: 639px) {
+  .gfm { margin-inline: calc(var(--gutter) * -1); padding-inline: calc(var(--gutter) + 8px); }   /* the 8px keeps panel A's axis title on screen */
+  .g-tick, .g-note, .g-region { font-size: 13.5px; }   /* not .g-axis: a longer axis title would run off the chart */
+  .g-site { font-size: 13px; }
+  .g-val { font-size: 14px; }
+}
 .p-figure--after { margin: clamp(80px, 9vw, 120px) 0 0; }
+
+
+/* ---------- findings: the claim, a few numbers, then the figure ----------
+   For a result that reads better as numbers than as a paragraph (03). It
+   follows the two columns, at the full width of the page: the claim, three
+   numbers under hairlines with a sentence each, and the rest in a paragraph.
+   The figure the numbers come from follows it. */
+
+.p-findings { margin-top: clamp(80px, 9vw, 128px); }
+.p-findings > .label { margin-bottom: 20px; }
+.p-findings .pull {
+  max-width: 30ch;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.22;
+  letter-spacing: -0.016em;
+  text-wrap: balance;
+  font-variation-settings: 'opsz' 60, 'wght' 330;
+}
+.p-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px clamp(32px, 4.5vw, 72px);
+  margin-top: clamp(56px, 7vw, 96px);
+}
+.p-stats li {
+  padding-top: 26px;
+  border-top: 1px solid var(--s-panel-2);
+  border-top-color: color-mix(in srgb, var(--s-text) 24%, transparent);
+}
+.p-stats .p-result__stat { font-size: clamp(44px, 4.8vw, 72px); }
+.p-stats p + p { max-width: 36ch; margin-top: 16px; font-size: 16.5px; line-height: 1.62; font-variation-settings: 'opsz' 20, 'wght' 330; }
+.p-findings__more,
+.p-findings--next p { max-width: 66ch; font-size: 18px; line-height: 1.7; font-variation-settings: 'opsz' 20, 'wght' 330; }
+.p-findings__more { margin-top: clamp(48px, 6vw, 72px); }
+.p-findings + .p-figure { margin-top: clamp(72px, 9vw, 120px); }
+.p-figure + .p-findings--next { margin-top: 0; }
+@media (max-width: 899px) {
+  .p-stats { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+}
 
 .gfm__panel { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
 .gfm__title { font-size: 19px; line-height: 1.2; font-variation-settings: 'opsz' 24, 'wght' 420; }
@@ -1117,7 +1214,7 @@ html.page-project {
 
 /* Fig. 1 C: the offset grid, on one shared diverging scale */
 .gfm__grid { display: grid; grid-template-columns: 5em repeat(18, minmax(0, 1fr)); gap: 3px; margin-top: 8px; align-items: center; }
-.gfm__k { font-size: 11px; line-height: 1.6; text-align: center; color: var(--s-muted); font-variant-numeric: tabular-nums; }
+.gfm__k { font-size: 12px; line-height: 1.6; text-align: center; color: var(--s-muted); font-variant-numeric: tabular-nums; }
 .gfm__head { font-size: 12.5px; line-height: 1.15; letter-spacing: 0.03em; color: var(--s-muted); }
 .gfm__head--key { color: var(--s-label); }
 .gfm__head--read { color: var(--s-accent); }
@@ -1139,10 +1236,10 @@ html.page-project {
 .gfm__guides line { stroke: var(--s-text); stroke-opacity: 0.5; stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
 .gfm__tag {
   position: absolute; top: 5px; transform: translateX(-50%); padding: 1px 5px;
-  font-size: 11px; letter-spacing: 0.1em;
+  font-size: 12px; letter-spacing: 0.1em;
   color: var(--s-text); background: color-mix(in srgb, var(--s-body) 80%, transparent);
 }
-.gfm__axisnote { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11.5px; color: var(--s-muted); font-variant-numeric: tabular-nums; }
+.gfm__axisnote { display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px; color: var(--s-muted); font-variant-numeric: tabular-nums; }
 .gfm__scale { font-size: 12px; color: var(--s-muted); }
 @media (max-width: 479px) { .gfm__maps { grid-template-columns: minmax(0, 1fr); } .gfm__mass--blank { display: none; } }
 
@@ -1212,9 +1309,9 @@ html.page-project {
 /* the anomaly layer: the error lights up a beat after its panel arrives,
    and the bars grow from zero, one after another */
 @media (prefers-reduced-motion: no-preference) {
-  .js-motion .lyr__hot { transition: fill-opacity 900ms var(--ease) 650ms; }
+  .js-motion .lyr__hot { transition: fill-opacity 900ms var(--ease) 450ms; }
   .js-motion .lyr__step:not(.is-in) .lyr__hot { fill-opacity: 0; }
-  .js-motion .lyr__step .v2-att, .js-motion .lyr__step .v2-nudge { transition: opacity 900ms var(--ease) 650ms; }
+  .js-motion .lyr__step .v2-att, .js-motion .lyr__step .v2-nudge { transition: opacity 900ms var(--ease) 450ms; }
   .js-motion .lyr__step:not(.is-in) .v2-att, .js-motion .lyr__step:not(.is-in) .v2-nudge { opacity: 0; }
   .js-motion .bars__bar { transition: transform var(--t-reveal) var(--ease) calc(200ms + var(--i) * 45ms); }
   .js-motion .p-bars:not(.is-in) .bars__bar { transform: scaleX(0); }
